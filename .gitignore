@@ -1,0 +1,9 @@
+# macOS가 폴더마다 만드는 파일
+.DS_Store
+
+# 영상 원본. 웹용으로 변환한 videos/ 안의 파일만 배포한다.
+kling_*.mp4
+
+# 학습용 파일. 내 컴퓨터에만 두고 GitHub에는 올리지 않는다.
+Python/
+HTML+CSS+Javascript/

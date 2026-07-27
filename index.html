@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +11,9 @@
     <!--header-->
     <header>
         <div class="container">
-            <a href="">
-            <i class="fa-solid fa-bars"></i>
-            </a>
+            <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="drawer">
+                <i class="fa-solid fa-bars"></i>
+            </button>
             <h1>
                 <button data-animation-scroll="true" data-target="#about">Moongyung Choi</button>
             </h1>
@@ -21,13 +21,156 @@
                 <ul>
                     <li><button data-animation-scroll="true" data-target="#about">About</button></li>
                     <li><button data-animation-scroll="true" data-target="#new">New</button></li>
-                    <li><button data-animation-scroll="true" data-target="#contact">contact</button></li>
+                    <li><button data-animation-scroll="true" data-target="#contact">Contact</button></li>
                 </ul>
             </nav>
         </div>
     </header>
+    <!--side drawer-->
+    <div class="drawer-backdrop"></div>
+    <aside class="drawer" id="drawer" aria-label="전체 메뉴" inert>
+        <div class="drawer-inner">
+            <div class="drawer-top">
+                <p class="drawer-brand">Moongyung Choi</p>
+                <button class="drawer-close" type="button" aria-label="메뉴 닫기">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <nav class="drawer-nav">
+                <h2 class="drawer-heading">Collections</h2>
+                <!--하위 항목은 마우스를 올리면(터치 기기는 눌러서) 펼쳐집니다.
+                    실제 페이지가 생기면 href를 채우고 data-placeholder를 지우세요.-->
+                <ul>
+                    <li class="has-submenu">
+                        <button type="button" class="submenu-trigger" aria-expanded="false">
+                            Women <i class="fa-solid fa-angle-down"></i>
+                        </button>
+                        <ul class="submenu">
+                            <li><a href="#" data-placeholder>Coats</a></li>
+                            <li><a href="#" data-placeholder>Jackets</a></li>
+                            <li><a href="#" data-placeholder>Dresses</a></li>
+                            <li><a href="#" data-placeholder>Knitwear</a></li>
+                            <li><a href="#" data-placeholder>Tops &amp; Blouses</a></li>
+                            <li><a href="#" data-placeholder>Trousers</a></li>
+                            <li><a href="#" data-placeholder>Skirts</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <button type="button" class="submenu-trigger" aria-expanded="false">
+                            Men <i class="fa-solid fa-angle-down"></i>
+                        </button>
+                        <ul class="submenu">
+                            <li><a href="#" data-placeholder>Coats</a></li>
+                            <li><a href="#" data-placeholder>Jackets</a></li>
+                            <li><a href="#" data-placeholder>Suits</a></li>
+                            <li><a href="#" data-placeholder>Knitwear</a></li>
+                            <li><a href="#" data-placeholder>Shirts</a></li>
+                            <li><a href="#" data-placeholder>Trousers</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <button type="button" class="submenu-trigger" aria-expanded="false">
+                            Bags <i class="fa-solid fa-angle-down"></i>
+                        </button>
+                        <ul class="submenu">
+                            <li><a href="#" data-placeholder>Tote Bags</a></li>
+                            <li><a href="#" data-placeholder>Shoulder Bags</a></li>
+                            <li><a href="#" data-placeholder>Cross Body</a></li>
+                            <li><a href="#" data-placeholder>Clutches</a></li>
+                            <li><a href="#" data-placeholder>Small Leather Goods</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <button type="button" class="submenu-trigger" aria-expanded="false">
+                            Shoes <i class="fa-solid fa-angle-down"></i>
+                        </button>
+                        <ul class="submenu">
+                            <li><a href="#" data-placeholder>Heels</a></li>
+                            <li><a href="#" data-placeholder>Flats</a></li>
+                            <li><a href="#" data-placeholder>Boots</a></li>
+                            <li><a href="#" data-placeholder>Sneakers</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <button type="button" class="submenu-trigger" aria-expanded="false">
+                            Accessories <i class="fa-solid fa-angle-down"></i>
+                        </button>
+                        <ul class="submenu">
+                            <li><a href="#" data-placeholder>Scarves</a></li>
+                            <li><a href="#" data-placeholder>Belts</a></li>
+                            <li><a href="#" data-placeholder>Jewellery</a></li>
+                            <li><a href="#" data-placeholder>Eyewear</a></li>
+                            <li><a href="#" data-placeholder>Hats</a></li>
+                            <li><a href="#" data-placeholder>Gloves</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <button type="button" class="submenu-trigger" aria-expanded="false">
+                            Beauty <i class="fa-solid fa-angle-down"></i>
+                        </button>
+                        <ul class="submenu">
+                            <li><a href="#" data-placeholder>Fragrance</a></li>
+                            <li><a href="#" data-placeholder>Makeup</a></li>
+                            <li><a href="#" data-placeholder>Skincare</a></li>
+                            <li><a href="#" data-placeholder>Body &amp; Bath</a></li>
+                            <li><a href="#" data-placeholder>Gift Sets</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h2 class="drawer-heading">Discover</h2>
+                <ul>
+                    <li><button data-animation-scroll="true" data-target="#about">About</button></li>
+                    <li><button data-animation-scroll="true" data-target="#new">New Arrivals</button></li>
+                    <li><a href="#" data-placeholder>Lookbook</a></li>
+                    <li><a href="#" data-placeholder>Journal</a></li>
+                    <li class="has-submenu">
+                        <button type="button" class="submenu-trigger" aria-expanded="false">
+                            Boutiques <i class="fa-solid fa-angle-down"></i>
+                        </button>
+                        <!--매장 목록은 예시입니다. 실제 매장에 맞게 고쳐 쓰세요.-->
+                        <ul class="submenu">
+                            <li><a href="#" data-placeholder>Seoul · Cheongdam</a></li>
+                            <li><a href="#" data-placeholder>Seoul · Apgujeong</a></li>
+                            <li><a href="#" data-placeholder>Seoul · Itaewon</a></li>
+                            <li><a href="#" data-placeholder>Seoul · Hannam</a></li>
+                            <li><a href="#" data-placeholder>Seoul · Seongsu</a></li>
+                            <li><a href="#" data-placeholder>Incheon · Songdo</a></li>
+                            <li><a href="#" data-placeholder>Busan · Haeundae</a></li>
+                            <li><a href="#" data-placeholder>Daegu · Suseong</a></li>
+                            <li><a href="#" data-placeholder>Jeju · Jungmun</a></li>
+                        </ul>
+                    </li>
+                    <li><button data-animation-scroll="true" data-target="#contact">Contact</button></li>
+                </ul>
+            </nav>
+
+            <div class="drawer-footer">
+                <div class="drawer-lang">
+                    <button type="button" class="is-active">KR</button>
+                    <span>/</span>
+                    <button type="button">EN</button>
+                </div>
+                <div class="drawer-social">
+                    <a href="" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <p class="drawer-contact">moongyungchoi@naver.com</p>
+            </div>
+        </div>
+    </aside>
     <!--main-->
     <main id="main">
+        <!--배경 영상. videos/main.mp4 파일을 넣으면 재생됩니다.
+            파일이 없거나 로딩 전이면 poster의 이미지가 대신 보입니다.
+            autoplay는 muted와 playsinline이 함께 있어야 브라우저가 허용합니다.-->
+        <video class="hero-video" autoplay muted loop playsinline poster="images/hero-poster.jpg">
+            <source src="videos/main.webm" type="video/webm">
+            <source src="videos/main.mp4" type="video/mp4">
+        </video>
         <div class="container">
             <h2>Moongyung Choi</h2>
             <h3>Paris</h3>
@@ -43,7 +186,7 @@
             </div>
             <div class="about-self">
                 <div class="left">
-                    <img src="images/about.png" alt="옷사진">  
+                    <img src="images/about.png" alt="디자이너 최문경의 대표 착장" lang="ko">
                 </div>
                 <div class="right">
                     <h3>Hello, <span>I'm Moongyung Choi</span></h3>
@@ -78,20 +221,20 @@
             </div>
             <div class="newproduct">
                 <div class="left">
-                    <img src="images/new1.JPG" alt="옷사진">  
-                    <p>문경초이 시그니처 코트</p>
+                    <img src="images/new1.JPG" alt="문경초이 시그니처 코트" lang="ko">
+                    <p lang="ko">문경초이 시그니처 코트</p>
                 </div>
                 <div class="center">
-                    <img src="images/new2.JPG" alt="옷사진">  
-                    <p id="cen">천연 가죽 가방</p>
+                    <img src="images/new2.JPG" alt="천연 가죽 가방" lang="ko">
+                    <p id="cen" lang="ko">천연 가죽 가방</p>
                 </div>
                 <div class="right">
-                    <img src="images/new3.JPG" alt="옷사진">  
-                    <p>긴 치마</p>
+                    <img src="images/new3.JPG" alt="긴 치마" lang="ko">
+                    <p lang="ko">긴 치마</p>
                 </div>
             </div>
             <div class="bottom">
-                <button>더 많은 신상품 보기</button>
+                <button type="button" lang="ko">더 많은 신상품 보기</button>
             </div>
         </div>
     </section>
@@ -121,7 +264,7 @@
                         </div>
                         <div class="info-text">
                             <h3>email</h3>
-                            <p>moongyungchoi @naver.com</p>
+                            <p><a href="mailto:moongyungchoi@naver.com">moongyungchoi@naver.com</a></p>
                         </div>
                     </div>
                     <div class="card">
@@ -129,31 +272,38 @@
                             <i class="fa-solid fa-location-dot"></i>    
                         </div>
                         <div class="info-text">
-                            <h3>addres</h3>
+                            <h3>address</h3>
                             <p>Teheran-ro, Gangnam-gu, Seoul, Republic of Korea</p>
                         </div>
                     </div>
                 </div>
                 <div class="right">
-                    <form action="">
+                    <!--아직 받는 곳이 없어 전송해도 메일이 오지 않습니다.
+                        Formspree(formspree.io) 같은 무료 서비스에 가입한 뒤
+                        action="https://formspree.io/f/받은주소" method="post" 로 바꾸면 동작합니다.-->
+                    <form action="" method="post">
                         <div class="form-group">
                             <label for="name">name</label>
-                            <input type="text" id="name">
+                            <input type="text" id="name" name="name" autocomplete="name" required>
                         </div>
                         <div class="form-group">
                             <label for="email">email</label>
-                            <input type="text" id="email">
+                            <input type="email" id="email" name="email" autocomplete="email" required>
                         </div>
                         <div class="form-group">
                             <label for="msg">message</label>
-                            <textarea id="msg"></textarea>
+                            <textarea id="msg" name="message" required></textarea>
                         </div>
-                        <button>send</button>
+                        <button type="submit">send</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+    <!--menu.js를 scroll.js보다 먼저 불러와야 합니다.
+        드로어 메뉴를 클릭하면 menu.js가 먼저 실행돼 스크롤 잠금을 풀고,
+        그 다음 scroll.js가 해당 위치로 이동합니다. 순서가 바뀌면 스크롤이 막힙니다.-->
+    <script src="menu.js"></script>
     <script src="scroll.js"></script>
 </body>
 </html>

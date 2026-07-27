@@ -1,8 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@400;700&family=Varela&display=swap');
+:root{
+    --color-bg: #faf9f7;      /* 오프화이트 배경 */
+    --color-bg-alt: #f2efea;  /* 섹션 교차 배경 */
+    --color-text: #1a1a1a;    /* 차콜 블랙 */
+    --color-muted: #8a8578;   /* 웜 그레이 */
+    --color-accent: #b08d57;  /* 뮤트 골드 */
+    --color-line: #e0dcd4;    /* 테두리 */
+}
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+body{
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 a, a:link, a:visited{
     color: inherit;
@@ -12,17 +24,22 @@ li{
     list-style: none;
 }
 .container{
-    width:1140px;
-    margin:0 auto;
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 1.5rem; /* 화면이 좁아져도 좌우가 붙지 않도록 */
 }
-section:nth-child(2n){
-    background-color: #f8f8f8;
+/* 이전에는 section:nth-child(2n)을 썼는데, body의 자식 순서에 의존해서
+   헤더나 드로어를 추가하면 결과가 바뀌었다. 명시적으로 지정한다. */
+#new,
+#contact{
+    background-color: var(--color-bg-alt);
 }
 /* header */
 header{
     position: fixed;
     top: 0;
-    color: black;
+    color: var(--color-text);
     width: 100%;
     z-index: 1000;
     background-color: white;
@@ -30,6 +47,8 @@ header{
 header .container{
     display: flex;
     width: 100%;
+    max-width: none; /* 헤더만 화면 전체 폭 사용 */
+    padding: 0;
     align-items: center;
     justify-content: space-between;
     background-color: white;
@@ -43,12 +62,23 @@ header h1 button{
     font-size: 2rem;
     font-weight: bold;
     position: absolute;
-    top: 0;
+    /* 양옆(햄버거·nav) 너비와 상관없이 헤더의 정중앙에 고정 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     padding: 18.75px;
-    margin: 0 auto;
+    white-space: nowrap;
 }
-header a{
-    margin-left: 10px;
+.menu-toggle{
+    margin-left: 1.5rem; /* 오른쪽 nav 여백(약 26px)과 좌우 균형 맞춤 */
+    font-size: 1.35rem;
+    line-height: 1;
+    padding: 0.5rem;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+.menu-toggle:hover{
+    color: var(--color-accent);
 }
 header nav ul{
     display: flex;
@@ -59,18 +89,55 @@ header nav ul li{
 }
 header nav ul li button{
     font-size: 1.2rem;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+header nav ul li button:hover{
+    color: var(--color-accent);
 }
 /* main */
 main{
+    position: relative;
+    overflow: hidden;
     width: 100%;
+    /* 모바일 브라우저의 100vh는 주소창까지 포함해 화면보다 크다.
+       svh를 지원하면 그쪽을 쓰고, 아니면 위의 100vh가 그대로 적용된다. */
     height: 100vh;
-    color: black;
-    background: linear-gradient(rgba(86, 86, 86, 0.8),rgba(86, 86, 86, 0.8)) ,url('images/main.jpg') ;
-    background-size: cover;
+    height: 100svh;
+    color: #fff;
+    /* 영상이 없을 때를 대비한 배경. 영상이 재생되면 그 뒤로 가려진다. */
+    background: url('images/hero-poster.jpg') center center / cover;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+.hero-video{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 화면 비율이 달라도 잘라서 꽉 채운다 */
+    z-index: 0;
+}
+/* 어두운 오버레이. 예전에는 background에 겹쳐 넣었지만
+   영상 위에 깔아야 해서 별도 레이어로 분리했다. */
+main::after{
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(rgba(26, 26, 26, 0.45), rgba(26, 26, 26, 0.6));
+}
+main .container{
+    position: relative;
+    z-index: 2; /* 오버레이보다 위에 글자가 오도록 */
+}
+/* 움직임을 줄이도록 설정한 사용자에게는 영상 대신 사진을 보여준다 */
+@media (prefers-reduced-motion: reduce){
+    .hero-video{
+        display: none;
+    }
 }
 main h2 {
     font-family: "Playfair Display", serif;
@@ -92,43 +159,34 @@ section{
     font-family: "Poppins", serif;
     padding: 5rem 0;
 }
-section .about-self::after{
-    content: '';
-    clear: both;
-    display: block;
+section .about-self{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
 }
 section .title{
     margin-bottom: 3rem;
 }
 section .title h4{
     font-size: 1.35rem;
-    color: rgb(235, 96, 228);
+    color: var(--color-accent);
     position: relative;
 }
 section .title h2{
     font-size: 3.5rem;
 }
-section .about-self .left{
-    width: 50%;
-    float: left;
-}
 section .about-self .left img{
-    width: 50%;
-    position: relative;
-    left: 25%;
-}
-section .about-self .right{
-    width: 50%;
-    float: left;
-    padding: 0 2rem;
-    height: 464.15px;
+    display: block;
+    width: 75%;
+    margin: 0 auto;
 }
 section .about-self .right h3{
     font-size: 2rem;
     margin-bottom: 1rem;
 }
 section .about-self .right h3 span{
-    color: rgb(235, 96, 228);
+    color: var(--color-accent);
 }
 section .about-self .right p{
     font-size: 1.15rem;
@@ -136,63 +194,83 @@ section .about-self .right p{
 }
 section .about-self .right .social a{
     font-size: 2.5rem;
-    margin-right: 0.2rem;
+    margin-right: 0.75rem;
+    transition: color 0.2s ease;
+}
+section .about-self .right .social a:hover{
+    color: var(--color-accent);
+}
+section .contact-me .left .card{
+    transition: border-color 0.25s ease;
+}
+section .contact-me .left .card:hover{
+    border-color: var(--color-accent);
+}
+section .newproduct img{
+    transition: opacity 0.3s ease;
+}
+section .newproduct img:hover{
+    opacity: 0.85;
 }
 /* new */
 #new{
     font-family: "Playfair Display", serif;
     padding: 5rem 0;
 }
-section .newproduct::after{
-    content: '';
-    clear: both;
-    display: block;
+/* auto-fit이라 화면이 좁아지면 3열 → 2열 → 1열로 알아서 줄어든다 */
+section .newproduct{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
 }
 #new .title{
     margin-bottom: 3rem;
 }
 #new .title h4{
     font-size: 2rem;
-    color: rgb(0, 0, 0);
+    color: var(--color-text);
     text-align: center;
 }
 #new .title h3{
     font-size: 1.35rem;
-    color: black;
+    color: var(--color-muted);
     text-align: center;
     font-weight: 300;
     margin-top: 2rem;
 }
-section .newproduct {
-    display:flex;
-    width: 100%;
-    justify-content: space-between;
-    text-align: center;
-}
 section .newproduct p {
     text-align: center;
+    font-size: 1.05rem;
 }
+/* 세 이미지의 원본 비율이 달라 높이가 들쭉날쭉했다.
+   new1·new2가 4:5, new3만 3:4이므로 4:5로 맞춰야 잘리는 사진이 하나로 줄어든다. */
 section .newproduct img{
-    width: 70%;
-    margin: 0 15%;
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    margin-bottom: 1.25rem;
 }
 section .container .bottom {
     display: flex;
     justify-content: center; /* 버튼을 가운데 정렬 */
 }
 section .container .bottom button{
-    box-shadow: 0 2px 0 -1px;
+    margin: 3rem auto 0;
+    padding: 0.9rem 2.5rem;
+    background-color: transparent;
+    border: 1px solid var(--color-text);
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    color: var(--color-text);
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
-section .container .bottom :hover{
-    background-color: black;
-    color: white;
-}
-section .container .bottom button {
-background-color: transparent;
-font-size: 0.75rem;
-border: 0;
-cursor: pointer;
-margin: 3rem auto;
+section .container .bottom button:hover{
+    background-color: var(--color-text);
+    border-color: var(--color-text);
+    color: #fff;
 }
 
 /* background */
@@ -200,35 +278,41 @@ margin: 3rem auto;
     background:url('images/background.JPG') center center;
     background-size: cover;
     background-attachment: fixed;
-    height: 650px;
+    /* 650px 고정이면 휴대폰에서 화면의 80%를 빈 이미지가 차지했다.
+       화면 높이에 따라 줄어들되 데스크톱에서는 650px을 넘지 않도록 한다. */
+    height: min(650px, 60vh);
+}
+/* background-attachment: fixed는 iOS 사파리에서 동작하지 않아
+   이미지가 어긋나 보인다. 터치 기기에서는 패럴랙스를 끈다. */
+@media (hover: none){
+    .bg{
+        background-attachment: scroll;
+    }
 }
 /* contact with me */
 section{
     font-family: "Poppins", serif;
     padding: 5rem 0;
 }
-section .contact-me::after{
-    content: '';
-    display: block;
-    clear: both;
+section .contact-me{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2.5rem;
+    align-items: start;
 }
 section .title{
     margin-bottom: 3rem;
 }
 section .title h4{
     font-size: 1.35rem;
-    color: rgb(235, 96, 228);
+    color: var(--color-accent);
     position: relative;
 }
 section .title h2{
     font-size: 3.5rem;
 }
-section .contact-me .left{
-    width:30%;
-    float: left;
-}
 section .contact-me .left .card{
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-line);
     padding: 1rem;
     display: flex;
     margin-bottom: 1.25rem;
@@ -238,11 +322,8 @@ section .contact-me .left .card .icon i{
     margin-right: 15px;
 }
 section .contact-me .right{
-    width:65%;
-    float: left;
-    margin-left: 5%;
-    border: 1px solid #ccc;
-    padding: 1rem;
+    border: 1px solid var(--color-line);
+    padding: 1.5rem;
 }
 section .contact-me .right .form-group{
     margin-bottom: 1.25rem;
@@ -255,94 +336,303 @@ section .contact-me .right .form-group input{
     width: 100%;
     padding: 0.625rem;
     outline: none;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-line);
     border-radius: 10px;
 }
 section .contact-me .right .form-group textarea{
     width: 100%;
-    height: 300px;
+    /* px 고정이면 모바일에서 과하게 길었다.
+       rem이라 좁은 화면에서 글자 크기와 함께 줄어든다. */
+    height: 16rem;
     outline: none;
     resize: none;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-line);
     border-radius: 10px;
 }
 section .contact-me .right .form-group input:focus,
 section .contact-me .right .form-group textarea:focus{
-    border: 1px solid #719ece;
-    box-shadow: 0 0 10px #719ece;
+    border: 1px solid var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(176, 141, 87, 0.18);
 }
 section .contact-me .right button{
     width: 100%;
     padding: 1rem;
-    background-color: #f78b00;
+    background-color: var(--color-text);
     border: none;
-    color: white;
+    color: #fff;
     cursor: pointer;
+    transition: background-color 0.25s ease;
 }
-@media screen and (max-width: 1140px){
-    main .container{
-        width: 992px
-    }
-    section .container{
-        width: 600px
-    }
-    section .about-self .left{
-        width: 100%;
-        margin-bottom:1.5rem;
-    }
-    section .about-self .right{
-        width: 100%;
-        padding: 0;
-    }
-    section .contact-me .left{
-        width: 100%;
-    }
-    section .contact-me .right{
-        width: 100%;
-        margin-left: 0;
-    }
+section .contact-me .right button:hover{
+    background-color: var(--color-accent);
 }
+/* .container가 width:100% + max-width라서 폭을 지정하던 미디어쿼리는 없앴다.
+   이제 글자 크기와 레이아웃 열 수만 조절한다. */
 @media screen and (max-width: 992px){
     html{
         font-size: 14px;
     }
-    main .container{
-        width: 768px
+    section .about-self{
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    section .contact-me{
+        grid-template-columns: 1fr;
     }
 }
 @media screen and (max-width: 768px){
     html{
         font-size: 13px;
     }
-    main .container{
-        width: 576px
+    /* 좁은 화면에서는 nav를 숨기고 햄버거(드로어)로 대체.
+       nav가 헤더 높이를 만들고 있었으므로 min-height로 높이를 유지한다. */
+    header nav{
+        display: none;
     }
-    section .container{
-        width: 400px
+    header .container{
+        min-height: 4rem;
+    }
+    header h1 button{
+        font-size: 1.6rem;
+        padding: 0.75rem;
     }
 }
 @media screen and (max-width: 576px){
     html{
         font-size: 12px;
     }
-    main .container{
-        width: 400px
+    main h2{
+        font-size: 3rem;
     }
-    section .container{
-        width: 360px
+    main h3{
+        font-size: 2rem;
+    }
+    section .title h2{
+        font-size: 2.5rem;
     }
 }
 @media screen and (max-width: 400px){
     html{
         font-size: 11px;
     }
-    main .container{
-        width: 320px
+}
+
+/* ===== side drawer ===== */
+.drawer-backdrop{
+    position: fixed;
+    inset: 0;
+    z-index: 1500;
+    background-color: rgba(26, 26, 26, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.drawer-backdrop.is-open{
+    opacity: 1;
+    visibility: visible;
+}
+.drawer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    width: min(420px, 86vw);
+    height: 100%;
+    overflow-y: auto;
+    background-color: var(--color-bg);
+    border-right: 1px solid var(--color-line);
+    transform: translateX(-100%);
+    transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.drawer.is-open{
+    transform: translateX(0);
+}
+.drawer-inner{
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 2rem 2.5rem 2.5rem;
+}
+.drawer-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+.drawer-brand{
+    font-family: "Playfair Display", serif;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+}
+.drawer-close{
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+    padding: 0.25rem;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+.drawer-close:hover{
+    color: var(--color-accent);
+}
+.drawer-nav{
+    flex-grow: 1;
+}
+.drawer-heading{
+    font-family: "Poppins", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.1rem;
+}
+.drawer-heading + ul{
+    margin-bottom: 2.75rem;
+}
+.drawer-nav li{
+    margin-bottom: 0.15rem;
+}
+.drawer-nav a,
+.drawer-nav button{
+    display: block;
+    width: 100%;
+    text-align: left;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    font-family: "Playfair Display", serif;
+    font-size: 1.5rem;
+    color: inherit;
+    padding: 0.35rem 0;
+    transition: color 0.2s ease, padding-left 0.25s ease;
+}
+.drawer-nav a:hover,
+.drawer-nav button:hover{
+    color: var(--color-accent);
+    padding-left: 0.6rem;
+}
+.drawer-footer{
+    border-top: 1px solid var(--color-line);
+    padding-top: 1.75rem;
+    margin-top: 2rem;
+}
+.drawer-lang{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+}
+.drawer-lang span{
+    color: var(--color-line);
+}
+.drawer-lang button{
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: var(--color-muted);
+    padding: 0;
+    transition: color 0.2s ease;
+}
+.drawer-lang button:hover{
+    color: var(--color-text);
+}
+.drawer-lang button.is-active{
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-accent);
+}
+.drawer-social{
+    display: flex;
+    gap: 1.15rem;
+    font-size: 1.15rem;
+    margin-bottom: 1.25rem;
+}
+.drawer-social a{
+    transition: color 0.2s ease;
+}
+.drawer-social a:hover{
+    color: var(--color-accent);
+}
+.drawer-contact{
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    letter-spacing: 0.5px;
+}
+body.menu-open{
+    overflow: hidden;
+}
+@media screen and (max-width: 576px){
+    .drawer-inner{
+        padding: 1.5rem 1.75rem 2rem;
     }
-    section .container{
-        width: 320px
+    .drawer-top{
+        margin-bottom: 2rem;
     }
-    section .title h2{
-        font-size: 3rem;
+    .drawer-nav a,
+    .drawer-nav button{
+        font-size: 1.35rem;
     }
+}
+
+/* ----- 드로어 하위 메뉴 ----- */
+.drawer-nav .submenu-trigger{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+.drawer-nav .submenu-trigger i{
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    transition: transform 0.3s ease, color 0.2s ease;
+}
+.drawer-nav .submenu{
+    max-height: 0;
+    overflow: hidden;
+    /* 닫혀 있을 때 Tab으로 들어가지 않도록 visibility까지 끈다.
+       visibility는 펼침 애니메이션이 끝난 뒤에 바뀌도록 지연을 준다. */
+    visibility: hidden;
+    transition: max-height 0.35s ease 0.12s, visibility 0s linear 0.47s;
+}
+.drawer-nav .submenu li{
+    margin-bottom: 0;
+}
+.drawer-nav .submenu a{
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+    color: var(--color-muted);
+    padding: 0.32rem 0 0.32rem 1.1rem;
+    border-left: 1px solid var(--color-line);
+    margin-left: 0.15rem;
+}
+.drawer-nav .submenu a:hover{
+    color: var(--color-accent);
+    border-left-color: var(--color-accent);
+    padding-left: 1.4rem;
+}
+.drawer-nav .submenu li:first-child a{
+    padding-top: 0.6rem;
+}
+.drawer-nav .submenu li:last-child a{
+    padding-bottom: 1.1rem;
+}
+/* 펼쳐진 상태.
+   예전에는 :hover로 열었는데, 그러면 마우스가 올라가 있는 동안 hover가 이겨서
+   화살표를 눌러도 닫히지 않았다. 그래서 여는 판단은 전부 menu.js가 하고
+   CSS는 is-open 클래스만 보고 그린다. */
+.has-submenu.is-open > .submenu{
+    max-height: 30rem;
+    visibility: visible;
+    transition: max-height 0.35s ease 0.12s, visibility 0s;
+}
+.has-submenu.is-open > .submenu-trigger i{
+    transform: rotate(180deg);
+    color: var(--color-accent);
 }
