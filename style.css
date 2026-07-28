@@ -7,6 +7,13 @@
     --color-accent: #b08d57;  /* 뮤트 골드 */
     --color-line: #e0dcd4;    /* 테두리 */
 }
+/* 스크롤바가 생겼다 없어질 때마다 화면 폭이 바뀌어,
+   헤더 정중앙에 고정한 브랜드명이 좌우로 튀었다.
+   (상품이 그려져 스크롤바가 생길 때, 드로어를 열어 스크롤을 잠글 때)
+   스크롤바 자리를 항상 비워두면 폭이 변하지 않는다. */
+html{
+    scrollbar-gutter: stable;
+}
 *{
     margin: 0;
     padding: 0;
@@ -15,6 +22,15 @@
 body{
     background-color: var(--color-bg);
     color: var(--color-text);
+    font-family: "Poppins", sans-serif;
+}
+/* button·input·textarea는 브라우저가 글꼴을 강제로 지정해서 상속하지 않는다.
+   그대로 두면 같은 글자라도 태그에 따라 다른 서체로 보인다. */
+button,
+input,
+textarea,
+select{
+    font-family: inherit;
 }
 a, a:link, a:visited{
     color: inherit;
@@ -36,13 +52,44 @@ li{
     background-color: var(--color-bg-alt);
 }
 /* header */
+/* 헤더는 히어로 영상 위에서 투명하게 떠 있다가,
+   스크롤하면 흰 배경으로 바뀐다 (is-scrolled는 scroll.js가 붙인다). */
 header{
     position: fixed;
     top: 0;
-    color: var(--color-text);
+    color: #fff;
     width: 100%;
     z-index: 1000;
-    background-color: white;
+    background-color: transparent;
+    transition: background-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease,
+                backdrop-filter 0.35s ease;
+}
+/* 투명할 때 영상의 밝은 부분에서도 글씨가 읽히도록 위쪽에 옅은 그늘을 깐다 */
+header::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0));
+    transition: opacity 0.35s ease;
+}
+header.is-scrolled{
+    color: var(--color-text);
+    /* 완전히 흰 판이 아니라 뒤가 은은히 비치는 반투명 + 블러 */
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--color-line);
+}
+header.is-scrolled::before{
+    opacity: 0;
+}
+/* 블러를 지원하지 않는 브라우저에서는 비치는 정도를 줄여 가독성을 지킨다 */
+@supports not (backdrop-filter: blur(1px)){
+    header.is-scrolled{
+        background-color: rgba(255, 255, 255, 0.95);
+    }
 }
 header .container{
     display: flex;
@@ -51,14 +98,23 @@ header .container{
     padding: 0;
     align-items: center;
     justify-content: space-between;
-    background-color: white;
 }
 header button{
     background-color: transparent;
     border: 0;
     cursor: pointer;
+    /* button은 브라우저 기본 글자색(검정)을 쓰므로 상속을 명시해야
+       헤더가 투명일 때 흰색, 스크롤 후 검은색으로 함께 바뀐다. */
+    color: inherit;
 }
-header h1 button{
+/* 페이지에 따라 브랜드명이 <button>이거나 <a>다.
+   (메인은 스크롤 이동 버튼, 하위 페이지는 메인으로 가는 링크)
+   한쪽만 잡으면 다른 페이지에서 중앙 고정이 풀린다. */
+header h1 button,
+header h1 a{
+    display: inline-block;
+    /* 태그가 달라도 같게 보이도록 서체를 못박아 둔다 */
+    font-family: "Playfair Display", serif;
     font-size: 2rem;
     font-weight: bold;
     position: absolute;
@@ -87,16 +143,18 @@ header nav ul{
 header nav ul li{
     padding: 10px;
 }
-header nav ul li button{
+header nav ul li button,
+header nav ul li a{
     font-size: 1.2rem;
     color: inherit;
     transition: color 0.2s ease;
 }
-header nav ul li button:hover{
+header nav ul li button:hover,
+header nav ul li a:hover{
     color: var(--color-accent);
 }
 /* main */
-main{
+.hero{
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -122,14 +180,14 @@ main{
 }
 /* 어두운 오버레이. 예전에는 background에 겹쳐 넣었지만
    영상 위에 깔아야 해서 별도 레이어로 분리했다. */
-main::after{
+.hero::after{
     content: '';
     position: absolute;
     inset: 0;
     z-index: 1;
     background: linear-gradient(rgba(26, 26, 26, 0.45), rgba(26, 26, 26, 0.6));
 }
-main .container{
+.hero .container{
     position: relative;
     z-index: 2; /* 오버레이보다 위에 글자가 오도록 */
 }
@@ -139,18 +197,18 @@ main .container{
         display: none;
     }
 }
-main h2 {
+.hero h2 {
     font-family: "Playfair Display", serif;
     font-size: 4rem;
     letter-spacing: 3px;
 }
-main h3{
+.hero h3{
     font-family: "Playfair Display", serif;
     font-size: 2.5rem;
     letter-spacing: 3px;
     margin-bottom: 2rem;
 }
-main p{
+.hero p{
     font-family: "Playfair Display", serif;
     font-size: 1.5rem;
 }
@@ -178,7 +236,13 @@ section .title h2{
 }
 section .about-self .left img{
     display: block;
-    width: 75%;
+    /* 화면 높이의 62%를 넘지 않게 해서 About 섹션이 한 화면에 들어오도록 한다.
+       가로 제한도 함께 둬서 폭이 넓고 높이가 낮은 화면에서 과하게 커지지 않게 한다.
+       (height:auto는 HTML의 height 속성이 그대로 적용되는 것을 막는 용도) */
+    width: auto;
+    height: auto;
+    max-width: 75%;
+    max-height: 62vh;
     margin: 0 auto;
 }
 section .about-self .right h3{
@@ -247,6 +311,9 @@ section .newproduct p {
 section .newproduct img{
     display: block;
     width: 100%;
+    /* height를 auto로 둬야 aspect-ratio가 높이를 결정한다.
+       (HTML의 height 속성이 그대로 적용되면 4:5가 무시된다) */
+    height: auto;
     aspect-ratio: 4 / 5;
     object-fit: cover;
     margin-bottom: 1.25rem;
@@ -275,7 +342,12 @@ section .container .bottom button:hover{
 
 /* background */
 .bg{
-    background:url('images/background.JPG') center center;
+    /* 아래 image-set을 이해하는 브라우저는 WebP(58KB)를,
+       못 하는 브라우저는 위의 JPG(147KB)를 받는다 */
+    background: url('images/background.JPG') center center;
+    background-image: image-set(url('images/background.webp') type('image/webp'),
+                                url('images/background.JPG') type('image/jpeg'));
+    background-position: center center;
     background-size: cover;
     background-attachment: fixed;
     /* 650px 고정이면 휴대폰에서 화면의 80%를 빈 이미지가 차지했다.
@@ -392,7 +464,8 @@ section .contact-me .right button:hover{
     header .container{
         min-height: 4rem;
     }
-    header h1 button{
+    header h1 button,
+    header h1 a{
         font-size: 1.6rem;
         padding: 0.75rem;
     }
@@ -401,10 +474,10 @@ section .contact-me .right button:hover{
     html{
         font-size: 12px;
     }
-    main h2{
+    .hero h2{
         font-size: 3rem;
     }
-    main h3{
+    .hero h3{
         font-size: 2rem;
     }
     section .title h2{
@@ -635,4 +708,162 @@ body.menu-open{
 .has-submenu.is-open > .submenu-trigger i{
     transform: rotate(180deg);
     color: var(--color-accent);
+}
+
+/* ===== 카테고리 페이지 ===== */
+/* 다른 페이지에서 index.html#about 으로 넘어올 때
+   고정 헤더에 제목이 가려지지 않도록 한다 */
+section{
+    scroll-margin-top: 5rem;
+}
+.category-page{
+    /* 고정 헤더 높이만큼 띄운다 */
+    padding: 9rem 0 6rem;
+    font-family: "Poppins", sans-serif;
+}
+.crumb{
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    color: var(--color-muted);
+    margin-bottom: 2.5rem;
+}
+.crumb a{
+    transition: color 0.2s ease;
+}
+.crumb a:hover{
+    color: var(--color-accent);
+}
+.category-head{
+    margin-bottom: 2.5rem;
+}
+.category-head h4{
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.9rem;
+}
+.category-head h2{
+    font-family: "Playfair Display", serif;
+    font-size: 3.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+}
+.category-head p{
+    font-size: 1.05rem;
+    color: var(--color-muted);
+}
+/* 하위 분류 버튼 */
+.filters{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    padding-bottom: 2.5rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--color-line);
+}
+.filters button{
+    padding: 0.55rem 1.2rem;
+    background-color: transparent;
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    color: var(--color-muted);
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+.filters button:hover{
+    color: var(--color-text);
+    border-color: var(--color-accent);
+}
+.filters button.is-active{
+    background-color: var(--color-text);
+    border-color: var(--color-text);
+    color: #fff;
+}
+/* 상품 격자 */
+.product-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 2.5rem 2rem;
+}
+.product-card{
+    display: block;
+    cursor: pointer;
+}
+.product-thumb{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 4 / 5;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    background: linear-gradient(160deg, #f4f1ec, #e6e0d6);
+    transition: filter 0.3s ease;
+}
+.product-thumb img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* 사진이 없는 자리표시 카드에 들어가는 큰 이니셜 */
+.product-mark{
+    font-family: "Playfair Display", serif;
+    font-size: 4rem;
+    color: var(--color-muted);
+    opacity: 0.45;
+    user-select: none;
+}
+.product-card:hover .product-thumb{
+    filter: brightness(0.96);
+}
+.product-card h3{
+    font-family: "Playfair Display", serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    margin-bottom: 0.35rem;
+    transition: color 0.2s ease;
+}
+.product-card:hover h3{
+    color: var(--color-accent);
+}
+.product-card p{
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-muted);
+}
+.grid-empty{
+    padding: 3rem 0;
+    text-align: center;
+    color: var(--color-muted);
+}
+.grid-note{
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-line);
+    font-size: 0.8rem;
+    color: var(--color-muted);
+}
+@media screen and (max-width: 768px){
+    .category-page{
+        padding: 7rem 0 4rem;
+    }
+    .category-head h2{
+        font-size: 2.5rem;
+    }
+    .product-grid{
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 2rem 1.25rem;
+    }
+    .product-mark{
+        font-size: 3rem;
+    }
 }
