@@ -867,3 +867,102 @@ section{
         font-size: 3rem;
     }
 }
+
+/* ===== 푸터 ===== */
+.site-footer{
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    font-family: "Poppins", sans-serif;
+    padding: 4.5rem 0 2.5rem;
+}
+.footer-main{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    /* 어두운 배경 위라 테두리도 옅게 */
+    border-bottom: 1px solid rgba(250, 249, 247, 0.15);
+}
+.footer-wordmark{
+    font-family: "Playfair Display", serif;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.4rem;
+}
+.footer-place{
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+.footer-col h3{
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.1rem;
+}
+.footer-col li{
+    margin-bottom: 0.6rem;
+}
+.footer-col a{
+    font-size: 0.9rem;
+    /* 흰색을 살짝 낮춰 브랜드명보다 뒤로 물러나게 */
+    color: rgba(250, 249, 247, 0.75);
+    transition: color 0.2s ease;
+}
+.footer-col a:hover{
+    color: var(--color-accent);
+}
+/* 사업자 정보 (지금은 주석 처리되어 있고, 값을 채우면 이 스타일이 적용된다) */
+.footer-biz{
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(250, 249, 247, 0.15);
+    font-size: 0.78rem;
+    line-height: 2;
+    color: rgba(250, 249, 247, 0.6);
+}
+.footer-biz span{
+    margin-right: 0.4rem;
+    color: rgba(250, 249, 247, 0.4);
+}
+.footer-biz span:not(:first-child){
+    margin-left: 1.2rem;
+}
+.footer-bottom{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    color: rgba(250, 249, 247, 0.55);
+}
+.footer-policy{
+    display: flex;
+    gap: 1.5rem;
+}
+.footer-policy a{
+    transition: color 0.2s ease;
+}
+.footer-policy a:hover{
+    color: var(--color-accent);
+}
+@media screen and (max-width: 768px){
+    .site-footer{
+        padding: 3rem 0 2rem;
+    }
+    .footer-main{
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    .footer-brand{
+        grid-column: 1 / -1;
+    }
+    .footer-bottom{
+        justify-content: flex-start;
+    }
+}
