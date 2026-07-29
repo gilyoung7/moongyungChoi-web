@@ -873,73 +873,70 @@ section{
     background-color: var(--color-text);
     color: var(--color-bg);
     font-family: "Poppins", sans-serif;
-    padding: 4.5rem 0 2.5rem;
+    padding: 3.25rem 0 1.75rem;
 }
+/* 사업자 정보까지 한 줄에 넣어 세로 길이를 줄인다 */
 .footer-main{
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 3rem;
-    padding-bottom: 3rem;
-    /* 어두운 배경 위라 테두리도 옅게 */
+    grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+    gap: 2.5rem;
+    padding-bottom: 2rem;
     border-bottom: 1px solid rgba(250, 249, 247, 0.15);
 }
 .footer-wordmark{
     font-family: "Playfair Display", serif;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     letter-spacing: 2px;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.35rem;
 }
 .footer-place{
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--color-accent);
 }
-.footer-col h3{
-    font-size: 0.7rem;
+.footer-col h3,
+.footer-biz h3{
+    font-size: 0.68rem;
     font-weight: 400;
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--color-accent);
-    margin-bottom: 1.1rem;
+    margin-bottom: 0.9rem;
 }
 .footer-col li{
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
 }
 .footer-col a{
-    font-size: 0.9rem;
-    /* 흰색을 살짝 낮춰 브랜드명보다 뒤로 물러나게 */
+    font-size: 0.88rem;
     color: rgba(250, 249, 247, 0.75);
     transition: color 0.2s ease;
 }
 .footer-col a:hover{
     color: var(--color-accent);
 }
-/* 사업자 정보 (지금은 주석 처리되어 있고, 값을 채우면 이 스타일이 적용된다) */
-.footer-biz{
-    padding: 2rem 0;
-    border-bottom: 1px solid rgba(250, 249, 247, 0.15);
+.footer-biz p{
     font-size: 0.78rem;
-    line-height: 2;
+    line-height: 1.85;
     color: rgba(250, 249, 247, 0.6);
 }
 .footer-biz span{
-    margin-right: 0.4rem;
-    color: rgba(250, 249, 247, 0.4);
-}
-.footer-biz span:not(:first-child){
-    margin-left: 1.2rem;
+    margin-right: 0.35rem;
+    color: rgba(250, 249, 247, 0.38);
 }
 .footer-bottom{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    padding-top: 2rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.5px;
-    color: rgba(250, 249, 247, 0.55);
+    gap: 0.75rem 2rem;
+    padding-top: 1.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.3px;
+    color: rgba(250, 249, 247, 0.5);
+}
+.footer-notice{
+    color: rgba(250, 249, 247, 0.38);
 }
 .footer-policy{
     display: flex;
@@ -951,18 +948,199 @@ section{
 .footer-policy a:hover{
     color: var(--color-accent);
 }
-@media screen and (max-width: 768px){
-    .site-footer{
-        padding: 3rem 0 2rem;
-    }
+@media screen and (max-width: 900px){
     .footer-main{
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
     }
-    .footer-brand{
-        grid-column: 1 / -1;
+}
+@media screen and (max-width: 576px){
+    .site-footer{
+        padding: 2.5rem 0 1.5rem;
+    }
+    .footer-main{
+        grid-template-columns: 1fr;
     }
     .footer-bottom{
         justify-content: flex-start;
     }
 }
+
+/* ===== 스크롤 등장 효과 ===== */
+/* .reveal은 reveal.js가 붙인다. JS가 없으면 클래스도 없으므로 그냥 보인다. */
+.reveal{
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reveal.is-visible{
+    opacity: 1;
+    transform: none;
+}
+/* 움직임을 줄이도록 설정한 경우 대비 (reveal.js도 같은 조건으로 막고 있다) */
+@media (prefers-reduced-motion: reduce){
+    .reveal{
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* ===== 404 페이지 ===== */
+.error-page{
+    /* 고정 헤더 아래에서 시작하고, 푸터 전까지 화면을 채운다 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 78vh;
+    padding: 9rem 0 6rem;
+    text-align: center;
+}
+/* 숫자 4 사이에 강아지가 앉아 0 자리를 대신한다.
+   flex로 상자 아래끝을 맞추면 글자 상자 밑과 4가 보이는 밑선이 달라 어긋난다.
+   글자처럼 한 줄에 놓고 baseline에 맞추면 발끝이 4의 밑선에 정확히 닿는다. */
+.error-mark{
+    text-align: center;
+    white-space: nowrap;
+    margin-bottom: 2rem;
+}
+.error-digit{
+    font-family: "Playfair Display", serif;
+    font-size: 7.5rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--color-text);
+}
+.dog{
+    display: inline-block;
+    /* 숫자보다 너무 크면 밑선이 맞아도 혼자 떠 보인다.
+       0 자리를 대신하는 크기이므로 4와 비슷한 덩치로 맞춘다. */
+    width: 6.5rem;
+    height: auto;
+    /* inline-block 요소는 아래 모서리가 글자 밑선에 놓인다.
+       그림자가 SVG 아래끝보다 6단위 위에 있어, 그만큼 내려 발이 밑선에 닿게 한다. */
+    vertical-align: baseline;
+    margin: 0 0.5rem -0.33rem;
+}
+.dog-tail{
+    transform-box: view-box;
+    transform-origin: 101px 104px;
+    animation: dog-wag 0.45s ease-in-out infinite alternate;
+}
+@keyframes dog-wag{
+    from{ transform: rotate(-20deg); }
+    to{ transform: rotate(18deg); }
+}
+.dog-body{
+    transform-box: view-box;
+    transform-origin: 70px 140px;
+    animation: dog-bob 1.8s ease-in-out infinite;
+}
+@keyframes dog-bob{
+    0%, 100%{ transform: translateY(0); }
+    50%{ transform: translateY(-4px); }
+}
+/* 몸이 뜰 때 그림자는 작고 옅어져야 실제로 들썩이는 것처럼 보인다 */
+.dog-shadow{
+    transform-box: view-box;
+    transform-origin: 70px 143px;
+    animation: dog-shadow 1.8s ease-in-out infinite;
+}
+@keyframes dog-shadow{
+    0%, 100%{ transform: scale(1); opacity: 0.13; }
+    50%{ transform: scale(0.86); opacity: 0.08; }
+}
+/* 대부분의 시간은 뜨고 있다가 아주 잠깐만 감는다 */
+.dog-eyes{
+    transform-box: view-box;
+    transform-origin: 70px 55px;
+    animation: dog-blink 4.5s ease-in-out infinite;
+}
+@keyframes dog-blink{
+    0%, 93%, 100%{ transform: scaleY(1); }
+    96%{ transform: scaleY(0.08); }
+}
+.ear-l{
+    transform-box: view-box;
+    transform-origin: 43px 38px;
+    animation: dog-ear 1.8s ease-in-out infinite;
+}
+.ear-r{
+    transform-box: view-box;
+    transform-origin: 97px 38px;
+    animation: dog-ear 1.8s ease-in-out infinite reverse;
+}
+@keyframes dog-ear{
+    0%, 100%{ transform: rotate(0deg); }
+    50%{ transform: rotate(6deg); }
+}
+/* 움직임을 줄이도록 설정한 사용자에게는 강아지를 멈춰 세운다 */
+@media (prefers-reduced-motion: reduce){
+    .dog-tail,
+    .dog-body,
+    .dog-shadow,
+    .dog-eyes,
+    .ear-l,
+    .ear-r{
+        animation: none;
+    }
+}
+.error-page h2{
+    font-family: "Playfair Display", serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+.error-desc{
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    margin-bottom: 2.75rem;
+}
+.error-actions{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}
+.error-actions a{
+    padding: 0.9rem 2.25rem;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 1px solid var(--color-text);
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+/* 전역 규칙 a:link{color:inherit}가 클래스 하나(.btn-solid)보다 우선순위가 높아서
+   글자색이 먹지 않았다. 부모를 붙여 우선순위를 올린다. */
+.error-actions .btn-solid{
+    background-color: var(--color-text);
+    color: var(--color-bg);
+}
+.error-actions .btn-solid:hover{
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg);
+}
+.error-actions .btn-line{
+    color: var(--color-text);
+}
+.error-actions .btn-line:hover{
+    background-color: var(--color-text);
+    color: var(--color-bg);
+}
+@media screen and (max-width: 576px){
+    .error-page{
+        padding: 7rem 0 4rem;
+    }
+    .error-digit{
+        font-size: 5rem;
+    }
+    .dog{
+        width: 6rem;
+    }
+    .error-page h2{
+        font-size: 1.7rem;
+    }
+}
+

@@ -3,28 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moongyung Choi — Paris</title>
-    <meta name="description" content="디자이너 최문경이 2025년 시작한 럭셔리 패션 브랜드. Moongyung Choi의 컬렉션을 만나보세요.">
-    <link rel="canonical" href="https://gilyoung7.github.io/moongyungChoi-web/">
+    <title>Page Not Found — Moongyung Choi</title>
+    <meta name="description" content="The page you are looking for does not exist.">
+    <meta name="robots" content="noindex">
     <meta name="theme-color" content="#1a1a1a">
 
-    <!--브라우저 탭·즐겨찾기 아이콘-->
     <link rel="icon" href="images/favicon-32.png" sizes="32x32">
     <link rel="icon" href="images/favicon-512.png" sizes="512x512">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
-    <!--카톡·인스타·슬랙 등에 링크를 보낼 때 뜨는 미리보기 카드.
-        og:image는 반드시 전체 주소여야 합니다.-->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Moongyung Choi">
-    <meta property="og:title" content="Moongyung Choi — Paris">
-    <meta property="og:description" content="디자이너 최문경이 2025년 시작한 럭셔리 패션 브랜드.">
-    <meta property="og:url" content="https://gilyoung7.github.io/moongyungChoi-web/">
+    <meta property="og:title" content="Moongyung Choi">
+    <meta property="og:description" content="Page not found.">
     <meta property="og:image" content="https://gilyoung7.github.io/moongyungChoi-web/images/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
@@ -36,13 +31,13 @@
                 <i class="fa-solid fa-bars"></i>
             </button>
             <h1>
-                <button data-animation-scroll="true" data-target="#main" aria-label="맨 위로">Moongyung Choi</button>
+                <a href="index.html" aria-label="홈으로">Moongyung Choi</a>
             </h1>
             <nav>
                 <ul>
-                    <li><button data-animation-scroll="true" data-target="#about">About</button></li>
-                    <li><button data-animation-scroll="true" data-target="#new">New</button></li>
-                    <li><button data-animation-scroll="true" data-target="#contact">Contact</button></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#new">New</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -148,8 +143,8 @@
 
                 <h2 class="drawer-heading">Discover</h2>
                 <ul>
-                    <li><button data-animation-scroll="true" data-target="#about">About</button></li>
-                    <li><button data-animation-scroll="true" data-target="#new">New Arrivals</button></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#new">New Arrivals</a></li>
                     <li><a href="#" data-placeholder>Lookbook</a></li>
                     <li><a href="#" data-placeholder>Journal</a></li>
                     <li class="has-submenu">
@@ -169,7 +164,7 @@
                             <li><a href="#" data-placeholder>Jeju · Jungmun</a></li>
                         </ul>
                     </li>
-                    <li><button data-animation-scroll="true" data-target="#contact">Contact</button></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </nav>
 
@@ -189,157 +184,59 @@
             </div>
         </div>
     </aside>
-    <!--main-->
-    <main id="main" class="hero">
-        <!--배경 영상. videos/main.mp4 파일을 넣으면 재생됩니다.
-            파일이 없거나 로딩 전이면 poster의 이미지가 대신 보입니다.
-            autoplay는 muted와 playsinline이 함께 있어야 브라우저가 허용합니다.-->
-        <video class="hero-video" autoplay muted loop playsinline poster="images/hero-poster.jpg">
-            <source src="videos/main.webm" type="video/webm">
-            <source src="videos/main.mp4" type="video/mp4">
-        </video>
+
+    <main class="error-page">
         <div class="container">
-            <h2>Moongyung Choi</h2>
-            <h3>Paris</h3>
-            <p>We aim to become a global group leading fashion</p>
+            <div class="error-mark">
+                <span class="error-digit">4</span>
+
+                <!--강아지 일러스트. 외부 파일 없이 SVG로 그리고 CSS로 움직입니다.
+                    꼬리 흔들기·눈 깜빡임·몸 들썩임 세 가지 애니메이션이 걸려 있습니다.-->
+                <svg class="dog" viewBox="0 22 140 128" role="img" aria-label="Illustration of a puppy">
+                    <!--바닥 그림자. 강아지가 떠 보이지 않도록 앉은 자리를 잡아준다-->
+                    <ellipse class="dog-shadow" cx="70" cy="143" rx="34" ry="5"
+                             fill="#1a1a1a" opacity="0.13"/>
+                    <g class="dog-tail">
+                        <path d="M101 100 q24 -4 19 -28" fill="none" stroke="#1a1a1a"
+                              stroke-width="10" stroke-linecap="round"/>
+                    </g>
+                    <g class="dog-body">
+                        <!--뒷다리를 먼저 그려 몸통 뒤로 보낸다-->
+                        <rect x="44" y="118" width="18" height="22" rx="9" fill="#1a1a1a"/>
+                        <rect x="78" y="118" width="18" height="22" rx="9" fill="#1a1a1a"/>
+                        <ellipse cx="70" cy="106" rx="33" ry="28" fill="#1a1a1a"/>
+                        <!--앞발-->
+                        <ellipse cx="55" cy="137" rx="11" ry="6" fill="#1a1a1a"/>
+                        <ellipse cx="85" cy="137" rx="11" ry="6" fill="#1a1a1a"/>
+                        <g class="dog-head">
+                            <ellipse class="ear ear-l" cx="43" cy="54" rx="12" ry="23" fill="#1a1a1a"/>
+                            <ellipse class="ear ear-r" cx="97" cy="54" rx="12" ry="23" fill="#1a1a1a"/>
+                            <circle cx="70" cy="60" r="32" fill="#1a1a1a"/>
+                            <ellipse cx="70" cy="75" rx="16" ry="12" fill="#f4f1ec"/>
+                            <ellipse cx="70" cy="67" rx="6" ry="4.5" fill="#1a1a1a"/>
+                            <g class="dog-eyes">
+                                <circle cx="58" cy="53" r="4" fill="#f4f1ec"/>
+                                <circle cx="82" cy="53" r="4" fill="#f4f1ec"/>
+                            </g>
+                        </g>
+                        <rect x="53" y="88" width="34" height="7" rx="3.5" fill="#b08d57"/>
+                    </g>
+                </svg>
+
+                <span class="error-digit">4</span>
+            </div>
+
+            <h2>Page Not Found</h2>
+            <p class="error-desc">
+                The page you are looking for does not exist or may have been moved.
+            </p>
+            <div class="error-actions">
+                <a class="btn-solid" href="index.html">Back to Home</a>
+                <a class="btn-line" href="category.html?c=women">View Collections</a>
+            </div>
         </div>
     </main>
-    <!--about-->
-    <section id="about">
-        <div class="container">
-            <div class="title">
-                <h4>Who is Moongyung Choi</h4>
-                <h2>About Moongyung Choi</h2>
-            </div>
-            <div class="about-self">
-                <div class="left">
-                    <!--WebP를 지원하면 가벼운 쪽을, 아니면 원본을 받는다-->
-                    <picture>
-                        <source srcset="images/about.webp" type="image/webp">
-                        <img src="images/about.png" alt="디자이너 최문경의 대표 착장" lang="ko" loading="lazy" width="898" height="1442">
-                    </picture>
-                </div>
-                <div class="right">
-                    <h3>Hello, <span>I'm Moongyung Choi</span></h3>
-                    <p>I'm global fashion designer</p> 
-                    <p>And graduated from Incheon National University in Korean with the department of fashion industry</p>
-                    <p>I've always wanted my brand "Moongyung Choi", which started since 2025, to go global</p>
-                    <p>Now, Enjoy my luxury brand Moongyung Choi!</p>
-                    <div class="social">
-                        <a href="">
-                            <i class="fa-brands fa-facebook"></i>
-                        </a>
-                        <a href="https://www.instagram.com/moongyungchoi_fashion/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="">
-                            <i class="fa-brands fa-x-twitter"></i>
-                        </a>
-                        <a href="">
-                            <i class="fa-brands fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--new-->
-    <section id="new">
-        <div class="container">
-            <div class="title">
-                <h4>Moongyung Choi</h4>
-                <h3>BEST COLLECTION</h3>
-            </div>
-            <div class="newproduct">
-                <div class="left">
-                    <picture>
-                        <source srcset="images/new1.webp" type="image/webp">
-                        <img src="images/new1.JPG" alt="문경초이 시그니처 코트" lang="ko" loading="lazy" width="1152" height="1440">
-                    </picture>
-                    <p lang="ko">문경초이 시그니처 코트</p>
-                </div>
-                <div class="center">
-                    <picture>
-                        <source srcset="images/new2.webp" type="image/webp">
-                        <img src="images/new2.JPG" alt="천연 가죽 가방" lang="ko" loading="lazy" width="1152" height="1440">
-                    </picture>
-                    <p id="cen" lang="ko">천연 가죽 가방</p>
-                </div>
-                <div class="right">
-                    <picture>
-                        <source srcset="images/new3.webp" type="image/webp">
-                        <img src="images/new3.JPG" alt="긴 치마" lang="ko" loading="lazy" width="1080" height="1440">
-                    </picture>
-                    <p lang="ko">긴 치마</p>
-                </div>
-            </div>
-            <div class="bottom">
-                <button type="button" lang="ko">더 많은 신상품 보기</button>
-            </div>
-        </div>
-    </section>
-    <!--background-->
-    <div class="bg"></div>
-    <!--contactwithme-->
-    <section id="contact">
-        <div class="container">
-            <div class="title">
-                <h4>CONTACT</h4>
-                <h2>Contact With Me</h2>
-            </div>
-            <div class="contact-me">
-                <div class="left">
-                    <div class="card">
-                        <div class="icon">
-                            <i class="fa-solid fa-phone"></i>    
-                        </div>
-                        <div class="info-text">
-                            <h3>phone</h3>
-                            <p>010-5914-5426</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="icon">
-                            <i class="fa-solid fa-envelope"></i>  
-                        </div>
-                        <div class="info-text">
-                            <h3>email</h3>
-                            <p><a href="mailto:moongyungchoi@naver.com">moongyungchoi@naver.com</a></p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="icon">
-                            <i class="fa-solid fa-location-dot"></i>    
-                        </div>
-                        <div class="info-text">
-                            <h3>address</h3>
-                            <p>Teheran-ro, Gangnam-gu, Seoul, Republic of Korea</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="right">
-                    <!--아직 받는 곳이 없어 전송해도 메일이 오지 않습니다.
-                        Formspree(formspree.io) 같은 무료 서비스에 가입한 뒤
-                        action="https://formspree.io/f/받은주소" method="post" 로 바꾸면 동작합니다.-->
-                    <form action="" method="post">
-                        <div class="form-group">
-                            <label for="name">name</label>
-                            <input type="text" id="name" name="name" autocomplete="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">email</label>
-                            <input type="email" id="email" name="email" autocomplete="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="msg">message</label>
-                            <textarea id="msg" name="message" required></textarea>
-                        </div>
-                        <button type="submit">send</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+
     <!--footer-->
     <footer class="site-footer">
         <div class="container">
@@ -396,9 +293,6 @@
             </div>
         </div>
     </footer>
-    <!--menu.js를 scroll.js보다 먼저 불러와야 합니다.
-        드로어 메뉴를 클릭하면 menu.js가 먼저 실행돼 스크롤 잠금을 풀고,
-        그 다음 scroll.js가 해당 위치로 이동합니다. 순서가 바뀌면 스크롤이 막힙니다.-->
     <script src="menu.js"></script>
     <script src="scroll.js"></script>
     <script src="reveal.js"></script>
