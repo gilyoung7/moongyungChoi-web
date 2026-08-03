@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--제목과 h2는 catalog.js가 카테고리에 맞춰 다시 채웁니다.-->
     <title>Collection — Moongyung Choi</title>
-    <meta name="description" content="Moongyung Choi 컬렉션. 여성·남성 의류, 가방, 슈즈, 액세서리, 뷰티.">
+    <meta name="description" data-i18n-content="meta.desc.category"
+          content="The Moongyung Choi collection. Women, Men, Bags, Shoes, Accessories and Beauty.">
     <meta name="theme-color" content="#1a1a1a">
 
     <link rel="icon" href="images/favicon-32.png" sizes="32x32">
@@ -14,40 +16,43 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Moongyung Choi">
     <meta property="og:title" content="Collection — Moongyung Choi">
-    <meta property="og:description" content="Moongyung Choi 컬렉션.">
+    <meta property="og:description" content="The Moongyung Choi collection.">
     <meta property="og:image" content="https://gilyoung7.github.io/moongyungChoi-web/images/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
+
+    <!--언어 전환(KR/EN). 다른 스크립트보다 먼저 실행돼야 하므로 head에 둡니다.-->
+    <script src="lang.js"></script>
 </head>
 <body>
     <!--header-->
     <header>
         <div class="container">
-            <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="drawer">
+            <button class="menu-toggle" type="button" aria-label="Open menu" data-i18n-aria-label="aria.menuOpen" aria-expanded="false" aria-controls="drawer">
                 <i class="fa-solid fa-bars"></i>
             </button>
             <h1>
-                <a href="index.html" aria-label="홈으로">Moongyung Choi</a>
+                <a href="index.html" aria-label="Go to home" data-i18n-aria-label="aria.home">Moongyung Choi</a>
             </h1>
             <nav>
                 <ul>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#new">New</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
+                    <li><a href="index.html#new" data-i18n="nav.new">New</a></li>
+                    <li><a href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <!--side drawer-->
     <div class="drawer-backdrop"></div>
-    <aside class="drawer" id="drawer" aria-label="전체 메뉴" inert>
+    <aside class="drawer" id="drawer" aria-label="Full menu" data-i18n-aria-label="aria.drawer" inert>
         <div class="drawer-inner">
             <div class="drawer-top">
                 <p class="drawer-brand">Moongyung Choi</p>
-                <button class="drawer-close" type="button" aria-label="메뉴 닫기">
+                <button class="drawer-close" type="button" aria-label="Close menu" data-i18n-aria-label="aria.menuClose">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -59,119 +64,120 @@
                 <ul>
                     <li class="has-submenu">
                         <button type="button" class="submenu-trigger" aria-expanded="false">
-                            Women <i class="fa-solid fa-angle-down"></i>
+                            <span data-i18n="cat.women">Women</span> <i class="fa-solid fa-angle-down"></i>
                         </button>
                         <ul class="submenu">
-                            <li><a href="category.html?c=women">View All</a></li>
-                            <li><a href="category.html?c=women&amp;sub=coats">Coats</a></li>
-                            <li><a href="category.html?c=women&amp;sub=jackets">Jackets</a></li>
-                            <li><a href="category.html?c=women&amp;sub=dresses">Dresses</a></li>
-                            <li><a href="category.html?c=women&amp;sub=knitwear">Knitwear</a></li>
-                            <li><a href="category.html?c=women&amp;sub=tops-blouses">Tops &amp; Blouses</a></li>
-                            <li><a href="category.html?c=women&amp;sub=trousers">Trousers</a></li>
-                            <li><a href="category.html?c=women&amp;sub=skirts">Skirts</a></li>
+                            <li><a href="category.html?c=women" data-i18n="sub.all">View All</a></li>
+                            <li><a href="category.html?c=women&amp;sub=coats" data-i18n="sub.coats">Coats</a></li>
+                            <li><a href="category.html?c=women&amp;sub=jackets" data-i18n="sub.jackets">Jackets</a></li>
+                            <li><a href="category.html?c=women&amp;sub=dresses" data-i18n="sub.dresses">Dresses</a></li>
+                            <li><a href="category.html?c=women&amp;sub=knitwear" data-i18n="sub.knitwear">Knitwear</a></li>
+                            <li><a href="category.html?c=women&amp;sub=tops-blouses" data-i18n="sub.tops-blouses">Tops &amp; Blouses</a></li>
+                            <li><a href="category.html?c=women&amp;sub=trousers" data-i18n="sub.trousers">Trousers</a></li>
+                            <li><a href="category.html?c=women&amp;sub=skirts" data-i18n="sub.skirts">Skirts</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu">
                         <button type="button" class="submenu-trigger" aria-expanded="false">
-                            Men <i class="fa-solid fa-angle-down"></i>
+                            <span data-i18n="cat.men">Men</span> <i class="fa-solid fa-angle-down"></i>
                         </button>
                         <ul class="submenu">
-                            <li><a href="category.html?c=men">View All</a></li>
-                            <li><a href="category.html?c=men&amp;sub=coats">Coats</a></li>
-                            <li><a href="category.html?c=men&amp;sub=jackets">Jackets</a></li>
-                            <li><a href="category.html?c=men&amp;sub=suits">Suits</a></li>
-                            <li><a href="category.html?c=men&amp;sub=knitwear">Knitwear</a></li>
-                            <li><a href="category.html?c=men&amp;sub=shirts">Shirts</a></li>
-                            <li><a href="category.html?c=men&amp;sub=trousers">Trousers</a></li>
+                            <li><a href="category.html?c=men" data-i18n="sub.all">View All</a></li>
+                            <li><a href="category.html?c=men&amp;sub=coats" data-i18n="sub.coats">Coats</a></li>
+                            <li><a href="category.html?c=men&amp;sub=jackets" data-i18n="sub.jackets">Jackets</a></li>
+                            <li><a href="category.html?c=men&amp;sub=suits" data-i18n="sub.suits">Suits</a></li>
+                            <li><a href="category.html?c=men&amp;sub=knitwear" data-i18n="sub.knitwear">Knitwear</a></li>
+                            <li><a href="category.html?c=men&amp;sub=shirts" data-i18n="sub.shirts">Shirts</a></li>
+                            <li><a href="category.html?c=men&amp;sub=trousers" data-i18n="sub.trousers">Trousers</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu">
                         <button type="button" class="submenu-trigger" aria-expanded="false">
-                            Bags <i class="fa-solid fa-angle-down"></i>
+                            <span data-i18n="cat.bags">Bags</span> <i class="fa-solid fa-angle-down"></i>
                         </button>
                         <ul class="submenu">
-                            <li><a href="category.html?c=bags">View All</a></li>
-                            <li><a href="category.html?c=bags&amp;sub=tote-bags">Tote Bags</a></li>
-                            <li><a href="category.html?c=bags&amp;sub=shoulder-bags">Shoulder Bags</a></li>
-                            <li><a href="category.html?c=bags&amp;sub=cross-body">Cross Body</a></li>
-                            <li><a href="category.html?c=bags&amp;sub=clutches">Clutches</a></li>
-                            <li><a href="category.html?c=bags&amp;sub=small-leather-goods">Small Leather Goods</a></li>
+                            <li><a href="category.html?c=bags" data-i18n="sub.all">View All</a></li>
+                            <li><a href="category.html?c=bags&amp;sub=tote-bags" data-i18n="sub.tote-bags">Tote Bags</a></li>
+                            <li><a href="category.html?c=bags&amp;sub=shoulder-bags" data-i18n="sub.shoulder-bags">Shoulder Bags</a></li>
+                            <li><a href="category.html?c=bags&amp;sub=cross-body" data-i18n="sub.cross-body">Cross Body</a></li>
+                            <li><a href="category.html?c=bags&amp;sub=clutches" data-i18n="sub.clutches">Clutches</a></li>
+                            <li><a href="category.html?c=bags&amp;sub=small-leather-goods" data-i18n="sub.small-leather-goods">Small Leather Goods</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu">
                         <button type="button" class="submenu-trigger" aria-expanded="false">
-                            Shoes <i class="fa-solid fa-angle-down"></i>
+                            <span data-i18n="cat.shoes">Shoes</span> <i class="fa-solid fa-angle-down"></i>
                         </button>
                         <ul class="submenu">
-                            <li><a href="category.html?c=shoes">View All</a></li>
-                            <li><a href="category.html?c=shoes&amp;sub=heels">Heels</a></li>
-                            <li><a href="category.html?c=shoes&amp;sub=flats">Flats</a></li>
-                            <li><a href="category.html?c=shoes&amp;sub=boots">Boots</a></li>
-                            <li><a href="category.html?c=shoes&amp;sub=sneakers">Sneakers</a></li>
+                            <li><a href="category.html?c=shoes" data-i18n="sub.all">View All</a></li>
+                            <li><a href="category.html?c=shoes&amp;sub=heels" data-i18n="sub.heels">Heels</a></li>
+                            <li><a href="category.html?c=shoes&amp;sub=flats" data-i18n="sub.flats">Flats</a></li>
+                            <li><a href="category.html?c=shoes&amp;sub=boots" data-i18n="sub.boots">Boots</a></li>
+                            <li><a href="category.html?c=shoes&amp;sub=sneakers" data-i18n="sub.sneakers">Sneakers</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu">
                         <button type="button" class="submenu-trigger" aria-expanded="false">
-                            Accessories <i class="fa-solid fa-angle-down"></i>
+                            <span data-i18n="cat.accessories">Accessories</span> <i class="fa-solid fa-angle-down"></i>
                         </button>
                         <ul class="submenu">
-                            <li><a href="category.html?c=accessories">View All</a></li>
-                            <li><a href="category.html?c=accessories&amp;sub=scarves">Scarves</a></li>
-                            <li><a href="category.html?c=accessories&amp;sub=belts">Belts</a></li>
-                            <li><a href="category.html?c=accessories&amp;sub=jewellery">Jewellery</a></li>
-                            <li><a href="category.html?c=accessories&amp;sub=eyewear">Eyewear</a></li>
-                            <li><a href="category.html?c=accessories&amp;sub=hats">Hats</a></li>
-                            <li><a href="category.html?c=accessories&amp;sub=gloves">Gloves</a></li>
+                            <li><a href="category.html?c=accessories" data-i18n="sub.all">View All</a></li>
+                            <li><a href="category.html?c=accessories&amp;sub=scarves" data-i18n="sub.scarves">Scarves</a></li>
+                            <li><a href="category.html?c=accessories&amp;sub=belts" data-i18n="sub.belts">Belts</a></li>
+                            <li><a href="category.html?c=accessories&amp;sub=jewellery" data-i18n="sub.jewellery">Jewellery</a></li>
+                            <li><a href="category.html?c=accessories&amp;sub=eyewear" data-i18n="sub.eyewear">Eyewear</a></li>
+                            <li><a href="category.html?c=accessories&amp;sub=hats" data-i18n="sub.hats">Hats</a></li>
+                            <li><a href="category.html?c=accessories&amp;sub=gloves" data-i18n="sub.gloves">Gloves</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu">
                         <button type="button" class="submenu-trigger" aria-expanded="false">
-                            Beauty <i class="fa-solid fa-angle-down"></i>
+                            <span data-i18n="cat.beauty">Beauty</span> <i class="fa-solid fa-angle-down"></i>
                         </button>
                         <ul class="submenu">
-                            <li><a href="category.html?c=beauty">View All</a></li>
-                            <li><a href="category.html?c=beauty&amp;sub=fragrance">Fragrance</a></li>
-                            <li><a href="category.html?c=beauty&amp;sub=makeup">Makeup</a></li>
-                            <li><a href="category.html?c=beauty&amp;sub=skincare">Skincare</a></li>
-                            <li><a href="category.html?c=beauty&amp;sub=body-bath">Body &amp; Bath</a></li>
-                            <li><a href="category.html?c=beauty&amp;sub=gift-sets">Gift Sets</a></li>
+                            <li><a href="category.html?c=beauty" data-i18n="sub.all">View All</a></li>
+                            <li><a href="category.html?c=beauty&amp;sub=fragrance" data-i18n="sub.fragrance">Fragrance</a></li>
+                            <li><a href="category.html?c=beauty&amp;sub=makeup" data-i18n="sub.makeup">Makeup</a></li>
+                            <li><a href="category.html?c=beauty&amp;sub=skincare" data-i18n="sub.skincare">Skincare</a></li>
+                            <li><a href="category.html?c=beauty&amp;sub=body-bath" data-i18n="sub.body-bath">Body &amp; Bath</a></li>
+                            <li><a href="category.html?c=beauty&amp;sub=gift-sets" data-i18n="sub.gift-sets">Gift Sets</a></li>
                         </ul>
                     </li>
                 </ul>
 
-                <h2 class="drawer-heading">Discover</h2>
+                <h2 class="drawer-heading" data-i18n="drawer.discover">Discover</h2>
                 <ul>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#new">New Arrivals</a></li>
-                    <li><a href="#" data-placeholder>Lookbook</a></li>
-                    <li><a href="#" data-placeholder>Journal</a></li>
+                    <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
+                    <li><a href="index.html#new" data-i18n="drawer.newArrivals">New Arrivals</a></li>
+                    <li><a href="#" data-placeholder data-i18n="drawer.lookbook">Lookbook</a></li>
+                    <li><a href="#" data-placeholder data-i18n="drawer.journal">Journal</a></li>
                     <li class="has-submenu">
                         <button type="button" class="submenu-trigger" aria-expanded="false">
-                            Boutiques <i class="fa-solid fa-angle-down"></i>
+                            <span data-i18n="drawer.boutiques">Boutiques</span> <i class="fa-solid fa-angle-down"></i>
                         </button>
                         <!--매장 목록은 예시입니다. 실제 매장에 맞게 고쳐 쓰세요.-->
                         <ul class="submenu">
-                            <li><a href="#" data-placeholder>Seoul · Cheongdam</a></li>
-                            <li><a href="#" data-placeholder>Seoul · Apgujeong</a></li>
-                            <li><a href="#" data-placeholder>Seoul · Itaewon</a></li>
-                            <li><a href="#" data-placeholder>Seoul · Hannam</a></li>
-                            <li><a href="#" data-placeholder>Seoul · Seongsu</a></li>
-                            <li><a href="#" data-placeholder>Incheon · Songdo</a></li>
-                            <li><a href="#" data-placeholder>Busan · Haeundae</a></li>
-                            <li><a href="#" data-placeholder>Daegu · Suseong</a></li>
-                            <li><a href="#" data-placeholder>Jeju · Jungmun</a></li>
+                            <li><a href="#" data-placeholder data-i18n="boutique.cheongdam">Seoul · Cheongdam</a></li>
+                            <li><a href="#" data-placeholder data-i18n="boutique.apgujeong">Seoul · Apgujeong</a></li>
+                            <li><a href="#" data-placeholder data-i18n="boutique.itaewon">Seoul · Itaewon</a></li>
+                            <li><a href="#" data-placeholder data-i18n="boutique.hannam">Seoul · Hannam</a></li>
+                            <li><a href="#" data-placeholder data-i18n="boutique.seongsu">Seoul · Seongsu</a></li>
+                            <li><a href="#" data-placeholder data-i18n="boutique.songdo">Incheon · Songdo</a></li>
+                            <li><a href="#" data-placeholder data-i18n="boutique.haeundae">Busan · Haeundae</a></li>
+                            <li><a href="#" data-placeholder data-i18n="boutique.suseong">Daegu · Suseong</a></li>
+                            <li><a href="#" data-placeholder data-i18n="boutique.jungmun">Jeju · Jungmun</a></li>
                         </ul>
                     </li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
                 </ul>
             </nav>
 
             <div class="drawer-footer">
+                <!--버튼을 누르면 lang.js가 사이트 전체 글자를 바꿔 넣습니다.-->
                 <div class="drawer-lang">
-                    <button type="button" class="is-active">KR</button>
+                    <button type="button" data-lang="ko">KR</button>
                     <span>/</span>
-                    <button type="button">EN</button>
+                    <button type="button" data-lang="en">EN</button>
                 </div>
                 <div class="drawer-social">
                     <a href="" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
@@ -186,21 +192,21 @@
 
     <main class="category-page">
         <div class="container">
-            <nav class="crumb" aria-label="현재 위치">
-                <a href="index.html">Home</a>
+            <nav class="crumb" aria-label="Breadcrumb" data-i18n-aria-label="aria.crumb">
+                <a href="index.html" data-i18n="crumb.home">Home</a>
                 <span>/</span>
                 <span id="crumb-current"></span>
             </nav>
             <div class="category-head">
-                <h4 id="category-eyebrow">Collection</h4>
+                <h4 id="category-eyebrow" data-i18n="category.eyebrow">Collection</h4>
                 <h2 id="category-title"></h2>
                 <p id="category-desc"></p>
             </div>
-            <div class="filters" id="filters" role="group" aria-label="하위 분류"></div>
+            <div class="filters" id="filters" role="group" aria-label="Subcategories" data-i18n-aria-label="aria.filters"></div>
             <div class="product-grid" id="product-grid"></div>
-            <p class="grid-empty" id="grid-empty" hidden>해당 분류에 등록된 상품이 없습니다.</p>
-            <p class="grid-note">
-                아직 준비 중인 페이지입니다. 실제 상품 정보는 순차적으로 공개됩니다.
+            <p class="grid-empty" id="grid-empty" data-i18n="grid.empty" hidden>There are no products in this category yet.</p>
+            <p class="grid-note" data-i18n="grid.note">
+                This page is still in preparation. Product details will be released in stages.
             </p>
         </div>
     </main>
@@ -214,24 +220,24 @@
                     <p class="footer-place">Paris</p>
                 </div>
                 <nav class="footer-col">
-                    <h3>Explore</h3>
+                    <h3 data-i18n="footer.explore">Explore</h3>
                     <ul>
-                        <li><a href="index.html#about">About</a></li>
-                        <li><a href="category.html?c=women">Collections</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="index.html#about" data-i18n="footer.about">About</a></li>
+                        <li><a href="category.html?c=women" data-i18n="footer.collections">Collections</a></li>
+                        <li><a href="index.html#contact" data-i18n="footer.contact">Contact</a></li>
                     </ul>
                 </nav>
                 <div class="footer-col">
-                    <h3>Follow</h3>
+                    <h3 data-i18n="footer.follow">Follow</h3>
                     <ul>
                         <li><a href="https://www.instagram.com/moongyungchoi_fashion/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
                     </ul>
                 </div>
                 <div class="footer-biz">
-                    <h3>Business</h3>
-                    <p><span>대표자</span> 최문경</p>
-                    <p><span>사업자등록번호</span> 437-37-01610</p>
-                    <p><span>이메일</span> moongyungchoi@naver.com</p>
+                    <h3 data-i18n="footer.business">Business</h3>
+                    <p><span data-i18n="footer.ceo">Representative</span> <span data-i18n="footer.ceoName">Moongyung Choi</span></p>
+                    <p><span data-i18n="footer.bizNo">Business registration no.</span> <span>437-37-01610</span></p>
+                    <p><span data-i18n="footer.email">Email</span> <span>moongyungchoi@naver.com</span></p>
                     <!--판매를 시작하면 아래 항목도 채워 넣으세요.
                         통신판매업 신고번호는 관할 구청에 신고하면 발급됩니다.
 
@@ -245,8 +251,8 @@
 
             <div class="footer-bottom">
                 <p class="footer-copy">&copy; 2026 Moongyung Choi. All rights reserved.</p>
-                <p class="footer-notice">
-                    본 사이트의 모든 이미지, 영상, 디자인, 텍스트의 무단 복제, 배포, 2차 가공을 금합니다.
+                <p class="footer-notice" data-i18n="footer.notice">
+                    Unauthorized reproduction, distribution, or adaptation of any image, video, design or text on this site is prohibited.
                 </p>
 
                 <!--정책 페이지를 만들면 주석을 풀고 href를 채우세요.

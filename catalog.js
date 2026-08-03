@@ -1,162 +1,115 @@
 /* 카테고리 페이지(category.html)의 상품 목록을 그린다.
    주소의 ?c=bags 로 카테고리를, ?sub=clutches 로 하위 분류를 정한다.
 
+   카테고리 이름(Women…)과 분류 이름(Coats…), 안내 문구는 lang.js의 사전에서
+   가져온다. 드로어 메뉴와 같은 글자를 쓰기 때문에 한곳에서만 고치면 된다.
+   상품 이름만 여기서 name(영어) / nameKo(한국어) 두 벌로 들고 있다.
+
    지금은 전부 자리표시용 상품입니다. 실제 상품이 생기면
-   아래 CATALOG의 items에 { name, sub, image } 형태로 채우면 되고,
+   아래 CATALOG의 items에 { name, nameKo, sub, image } 형태로 채우면 되고,
    image를 넣으면 회색 자리 대신 사진이 나옵니다. */
 const CATALOG = {
     women: {
-        title: "Women",
-        desc: "일상과 무대의 경계를 지우는 여성 컬렉션.",
-        subs: [
-            { slug: "coats", label: "Coats" },
-            { slug: "jackets", label: "Jackets" },
-            { slug: "dresses", label: "Dresses" },
-            { slug: "knitwear", label: "Knitwear" },
-            { slug: "tops-blouses", label: "Tops & Blouses" },
-            { slug: "trousers", label: "Trousers" },
-            { slug: "skirts", label: "Skirts" }
-        ],
+        subs: ["coats", "jackets", "dresses", "knitwear", "tops-blouses", "trousers", "skirts"],
         items: [
-            { name: "Signature Wool Coat", sub: "coats" },
-            { name: "Double-Breasted Trench", sub: "coats" },
-            { name: "Cashmere Wrap Coat", sub: "coats" },
-            { name: "Cropped Tweed Jacket", sub: "jackets" },
-            { name: "Leather Biker Jacket", sub: "jackets" },
-            { name: "Pleated Midi Dress", sub: "dresses" },
-            { name: "Silk Slip Dress", sub: "dresses" },
-            { name: "Floral Tiered Gown", sub: "dresses" },
-            { name: "Ribbed Cashmere Knit", sub: "knitwear" },
-            { name: "Oversized Mohair Sweater", sub: "knitwear" },
-            { name: "Silk Tie-Neck Blouse", sub: "tops-blouses" },
-            { name: "Cotton Poplin Shirt", sub: "tops-blouses" },
-            { name: "High-Waist Wool Trousers", sub: "trousers" },
-            { name: "Wide-Leg Linen Trousers", sub: "trousers" },
-            { name: "Pleated Maxi Skirt", sub: "skirts" },
-            { name: "A-Line Wool Skirt", sub: "skirts" }
+            { name: "Signature Wool Coat", nameKo: "시그니처 울 코트", sub: "coats" },
+            { name: "Double-Breasted Trench", nameKo: "더블브레스티드 트렌치코트", sub: "coats" },
+            { name: "Cashmere Wrap Coat", nameKo: "캐시미어 랩 코트", sub: "coats" },
+            { name: "Cropped Tweed Jacket", nameKo: "크롭 트위드 재킷", sub: "jackets" },
+            { name: "Leather Biker Jacket", nameKo: "레더 바이커 재킷", sub: "jackets" },
+            { name: "Pleated Midi Dress", nameKo: "플리츠 미디 드레스", sub: "dresses" },
+            { name: "Silk Slip Dress", nameKo: "실크 슬립 드레스", sub: "dresses" },
+            { name: "Floral Tiered Gown", nameKo: "플로럴 티어드 가운", sub: "dresses" },
+            { name: "Ribbed Cashmere Knit", nameKo: "골지 캐시미어 니트", sub: "knitwear" },
+            { name: "Oversized Mohair Sweater", nameKo: "오버사이즈 모헤어 스웨터", sub: "knitwear" },
+            { name: "Silk Tie-Neck Blouse", nameKo: "실크 타이넥 블라우스", sub: "tops-blouses" },
+            { name: "Cotton Poplin Shirt", nameKo: "코튼 포플린 셔츠", sub: "tops-blouses" },
+            { name: "High-Waist Wool Trousers", nameKo: "하이웨이스트 울 팬츠", sub: "trousers" },
+            { name: "Wide-Leg Linen Trousers", nameKo: "와이드 린넨 팬츠", sub: "trousers" },
+            { name: "Pleated Maxi Skirt", nameKo: "플리츠 맥시 스커트", sub: "skirts" },
+            { name: "A-Line Wool Skirt", nameKo: "A라인 울 스커트", sub: "skirts" }
         ]
     },
     men: {
-        title: "Men",
-        desc: "절제된 실루엣으로 완성한 남성 컬렉션.",
-        subs: [
-            { slug: "coats", label: "Coats" },
-            { slug: "jackets", label: "Jackets" },
-            { slug: "suits", label: "Suits" },
-            { slug: "knitwear", label: "Knitwear" },
-            { slug: "shirts", label: "Shirts" },
-            { slug: "trousers", label: "Trousers" }
-        ],
+        subs: ["coats", "jackets", "suits", "knitwear", "shirts", "trousers"],
         items: [
-            { name: "Wool Overcoat", sub: "coats" },
-            { name: "Cashmere Car Coat", sub: "coats" },
-            { name: "Unstructured Blazer", sub: "jackets" },
-            { name: "Suede Bomber Jacket", sub: "jackets" },
-            { name: "Two-Piece Wool Suit", sub: "suits" },
-            { name: "Single-Breasted Tuxedo", sub: "suits" },
-            { name: "Merino Crewneck", sub: "knitwear" },
-            { name: "Cable-Knit Cardigan", sub: "knitwear" },
-            { name: "Cotton Oxford Shirt", sub: "shirts" },
-            { name: "Silk Evening Shirt", sub: "shirts" },
-            { name: "Tailored Wool Trousers", sub: "trousers" },
-            { name: "Pleated Linen Trousers", sub: "trousers" }
+            { name: "Wool Overcoat", nameKo: "울 오버코트", sub: "coats" },
+            { name: "Cashmere Car Coat", nameKo: "캐시미어 카 코트", sub: "coats" },
+            { name: "Unstructured Blazer", nameKo: "언스트럭처드 블레이저", sub: "jackets" },
+            { name: "Suede Bomber Jacket", nameKo: "스웨이드 봄버 재킷", sub: "jackets" },
+            { name: "Two-Piece Wool Suit", nameKo: "울 투피스 슈트", sub: "suits" },
+            { name: "Single-Breasted Tuxedo", nameKo: "싱글브레스티드 턱시도", sub: "suits" },
+            { name: "Merino Crewneck", nameKo: "메리노 크루넥 니트", sub: "knitwear" },
+            { name: "Cable-Knit Cardigan", nameKo: "케이블 니트 가디건", sub: "knitwear" },
+            { name: "Cotton Oxford Shirt", nameKo: "코튼 옥스퍼드 셔츠", sub: "shirts" },
+            { name: "Silk Evening Shirt", nameKo: "실크 이브닝 셔츠", sub: "shirts" },
+            { name: "Tailored Wool Trousers", nameKo: "테일러드 울 팬츠", sub: "trousers" },
+            { name: "Pleated Linen Trousers", nameKo: "플리츠 린넨 팬츠", sub: "trousers" }
         ]
     },
     bags: {
-        title: "Bags",
-        desc: "장인의 손끝에서 완성된 가죽 제품.",
-        subs: [
-            { slug: "tote-bags", label: "Tote Bags" },
-            { slug: "shoulder-bags", label: "Shoulder Bags" },
-            { slug: "cross-body", label: "Cross Body" },
-            { slug: "clutches", label: "Clutches" },
-            { slug: "small-leather-goods", label: "Small Leather Goods" }
-        ],
+        subs: ["tote-bags", "shoulder-bags", "cross-body", "clutches", "small-leather-goods"],
         items: [
-            { name: "Structured Leather Tote", sub: "tote-bags" },
-            { name: "Soft Calfskin Tote", sub: "tote-bags" },
-            { name: "Canvas Shopper", sub: "tote-bags" },
-            { name: "Quilted Shoulder Bag", sub: "shoulder-bags" },
-            { name: "Chain Hobo Bag", sub: "shoulder-bags" },
-            { name: "Mini Cross Body", sub: "cross-body" },
-            { name: "Saddle Cross Body", sub: "cross-body" },
-            { name: "Satin Evening Clutch", sub: "clutches" },
-            { name: "Envelope Clutch", sub: "clutches" },
-            { name: "Bifold Card Holder", sub: "small-leather-goods" },
-            { name: "Zip Around Wallet", sub: "small-leather-goods" },
-            { name: "Leather Key Pouch", sub: "small-leather-goods" }
+            { name: "Structured Leather Tote", nameKo: "스트럭처드 레더 토트백", sub: "tote-bags" },
+            { name: "Soft Calfskin Tote", nameKo: "소프트 카프스킨 토트백", sub: "tote-bags" },
+            { name: "Canvas Shopper", nameKo: "캔버스 쇼퍼백", sub: "tote-bags" },
+            { name: "Quilted Shoulder Bag", nameKo: "퀼팅 숄더백", sub: "shoulder-bags" },
+            { name: "Chain Hobo Bag", nameKo: "체인 호보백", sub: "shoulder-bags" },
+            { name: "Mini Cross Body", nameKo: "미니 크로스백", sub: "cross-body" },
+            { name: "Saddle Cross Body", nameKo: "새들 크로스백", sub: "cross-body" },
+            { name: "Satin Evening Clutch", nameKo: "새틴 이브닝 클러치", sub: "clutches" },
+            { name: "Envelope Clutch", nameKo: "엔벨로프 클러치", sub: "clutches" },
+            { name: "Bifold Card Holder", nameKo: "이단 카드 홀더", sub: "small-leather-goods" },
+            { name: "Zip Around Wallet", nameKo: "지퍼 장지갑", sub: "small-leather-goods" },
+            { name: "Leather Key Pouch", nameKo: "레더 키 파우치", sub: "small-leather-goods" }
         ]
     },
     shoes: {
-        title: "Shoes",
-        desc: "걸음마다 완성되는 실루엣.",
-        subs: [
-            { slug: "heels", label: "Heels" },
-            { slug: "flats", label: "Flats" },
-            { slug: "boots", label: "Boots" },
-            { slug: "sneakers", label: "Sneakers" }
-        ],
+        subs: ["heels", "flats", "boots", "sneakers"],
         items: [
-            { name: "Pointed Leather Pump", sub: "heels" },
-            { name: "Satin Slingback", sub: "heels" },
-            { name: "Sculpted Heel Sandal", sub: "heels" },
-            { name: "Leather Ballet Flat", sub: "flats" },
-            { name: "Suede Loafer", sub: "flats" },
-            { name: "Knee-High Leather Boot", sub: "boots" },
-            { name: "Chelsea Ankle Boot", sub: "boots" },
-            { name: "Leather Low-Top Sneaker", sub: "sneakers" },
-            { name: "Suede Runner", sub: "sneakers" }
+            { name: "Pointed Leather Pump", nameKo: "포인티드 레더 펌프스", sub: "heels" },
+            { name: "Satin Slingback", nameKo: "새틴 슬링백", sub: "heels" },
+            { name: "Sculpted Heel Sandal", nameKo: "스컬프처드 힐 샌들", sub: "heels" },
+            { name: "Leather Ballet Flat", nameKo: "레더 발레 플랫", sub: "flats" },
+            { name: "Suede Loafer", nameKo: "스웨이드 로퍼", sub: "flats" },
+            { name: "Knee-High Leather Boot", nameKo: "니하이 레더 부츠", sub: "boots" },
+            { name: "Chelsea Ankle Boot", nameKo: "첼시 앵클부츠", sub: "boots" },
+            { name: "Leather Low-Top Sneaker", nameKo: "레더 로우탑 스니커즈", sub: "sneakers" },
+            { name: "Suede Runner", nameKo: "스웨이드 러너", sub: "sneakers" }
         ]
     },
     accessories: {
-        title: "Accessories",
-        desc: "마무리를 결정하는 작은 차이.",
-        subs: [
-            { slug: "scarves", label: "Scarves" },
-            { slug: "belts", label: "Belts" },
-            { slug: "jewellery", label: "Jewellery" },
-            { slug: "eyewear", label: "Eyewear" },
-            { slug: "hats", label: "Hats" },
-            { slug: "gloves", label: "Gloves" }
-        ],
+        subs: ["scarves", "belts", "jewellery", "eyewear", "hats", "gloves"],
         items: [
-            { name: "Silk Twill Scarf", sub: "scarves" },
-            { name: "Cashmere Stole", sub: "scarves" },
-            { name: "Leather Buckle Belt", sub: "belts" },
-            { name: "Chain Link Belt", sub: "belts" },
-            { name: "Gold Hoop Earrings", sub: "jewellery" },
-            { name: "Pearl Drop Necklace", sub: "jewellery" },
-            { name: "Signet Ring", sub: "jewellery" },
-            { name: "Acetate Sunglasses", sub: "eyewear" },
-            { name: "Slim Metal Frames", sub: "eyewear" },
-            { name: "Straw Boater Hat", sub: "hats" },
-            { name: "Wool Felt Fedora", sub: "hats" },
-            { name: "Lambskin Gloves", sub: "gloves" }
+            { name: "Silk Twill Scarf", nameKo: "실크 트윌 스카프", sub: "scarves" },
+            { name: "Cashmere Stole", nameKo: "캐시미어 스톨", sub: "scarves" },
+            { name: "Leather Buckle Belt", nameKo: "레더 버클 벨트", sub: "belts" },
+            { name: "Chain Link Belt", nameKo: "체인 링크 벨트", sub: "belts" },
+            { name: "Gold Hoop Earrings", nameKo: "골드 후프 이어링", sub: "jewellery" },
+            { name: "Pearl Drop Necklace", nameKo: "펄 드롭 네크리스", sub: "jewellery" },
+            { name: "Signet Ring", nameKo: "시그넷 링", sub: "jewellery" },
+            { name: "Acetate Sunglasses", nameKo: "아세테이트 선글라스", sub: "eyewear" },
+            { name: "Slim Metal Frames", nameKo: "슬림 메탈 프레임", sub: "eyewear" },
+            { name: "Straw Boater Hat", nameKo: "스트로 보터 햇", sub: "hats" },
+            { name: "Wool Felt Fedora", nameKo: "울 펠트 페도라", sub: "hats" },
+            { name: "Lambskin Gloves", nameKo: "램스킨 장갑", sub: "gloves" }
         ]
     },
     beauty: {
-        title: "Beauty",
-        desc: "향으로 남는 브랜드의 기억.",
-        subs: [
-            { slug: "fragrance", label: "Fragrance" },
-            { slug: "makeup", label: "Makeup" },
-            { slug: "skincare", label: "Skincare" },
-            { slug: "body-bath", label: "Body & Bath" },
-            { slug: "gift-sets", label: "Gift Sets" }
-        ],
+        subs: ["fragrance", "makeup", "skincare", "body-bath", "gift-sets"],
         items: [
-            { name: "Eau de Parfum No.1", sub: "fragrance" },
-            { name: "Eau de Toilette Blanc", sub: "fragrance" },
-            { name: "Solid Perfume Case", sub: "fragrance" },
-            { name: "Satin Matte Lipstick", sub: "makeup" },
-            { name: "Sheer Cushion Foundation", sub: "makeup" },
-            { name: "Eye Palette Nude", sub: "makeup" },
-            { name: "Renewal Serum", sub: "skincare" },
-            { name: "Hydrating Cream", sub: "skincare" },
-            { name: "Perfumed Body Lotion", sub: "body-bath" },
-            { name: "Scented Bath Oil", sub: "body-bath" },
-            { name: "Discovery Set", sub: "gift-sets" },
-            { name: "Holiday Coffret", sub: "gift-sets" }
+            { name: "Eau de Parfum No.1", nameKo: "오 드 퍼퓸 No.1", sub: "fragrance" },
+            { name: "Eau de Toilette Blanc", nameKo: "오 드 뚜왈렛 블랑", sub: "fragrance" },
+            { name: "Solid Perfume Case", nameKo: "고체 향수 케이스", sub: "fragrance" },
+            { name: "Satin Matte Lipstick", nameKo: "새틴 매트 립스틱", sub: "makeup" },
+            { name: "Sheer Cushion Foundation", nameKo: "시어 쿠션 파운데이션", sub: "makeup" },
+            { name: "Eye Palette Nude", nameKo: "아이 팔레트 누드", sub: "makeup" },
+            { name: "Renewal Serum", nameKo: "리뉴얼 세럼", sub: "skincare" },
+            { name: "Hydrating Cream", nameKo: "수분 크림", sub: "skincare" },
+            { name: "Perfumed Body Lotion", nameKo: "퍼퓸 바디로션", sub: "body-bath" },
+            { name: "Scented Bath Oil", nameKo: "센티드 배스 오일", sub: "body-bath" },
+            { name: "Discovery Set", nameKo: "디스커버리 세트", sub: "gift-sets" },
+            { name: "Holiday Coffret", nameKo: "홀리데이 코프레", sub: "gift-sets" }
         ]
     }
 };
@@ -172,6 +125,14 @@ const filtersEl = document.querySelector("#filters");
 const gridEl = document.querySelector("#product-grid");
 const emptyEl = document.querySelector("#grid-empty");
 
+/* 지금 언어에 맞는 상품 이름. 한국어 이름이 없으면 영어 이름을 쓴다. */
+const itemName = function (item) {
+    return getLanguage() === "ko" && item.nameKo ? item.nameKo : item.name;
+};
+
+/* 지금 고른 하위 분류. 언어를 바꿔 다시 그릴 때 그대로 유지하려고 기억해 둔다. */
+let activeSub = "";
+
 /* 자리표시 카드. 사진이 없으므로 이름 첫 글자를 크게 넣어 채운다. */
 const renderItems = function (items) {
     gridEl.innerHTML = "";
@@ -182,25 +143,27 @@ const renderItems = function (items) {
         card.href = "#";
         card.setAttribute("data-placeholder", "");
 
+        const label = itemName(item);
+
         const thumb = document.createElement("div");
         thumb.className = "product-thumb";
         if (item.image) {
             const img = document.createElement("img");
             img.src = item.image;
-            img.alt = item.name;
+            img.alt = label;
             thumb.appendChild(img);
         } else {
             const mark = document.createElement("span");
             mark.className = "product-mark";
-            mark.textContent = item.name.charAt(0);
+            mark.textContent = label.charAt(0);
             thumb.appendChild(mark);
         }
 
         const name = document.createElement("h3");
-        name.textContent = item.name;
+        name.textContent = label;
 
         const status = document.createElement("p");
-        status.textContent = "Coming Soon";
+        status.textContent = t("product.comingSoon");
 
         card.appendChild(thumb);
         card.appendChild(name);
@@ -211,9 +174,11 @@ const renderItems = function (items) {
 };
 
 const applyFilter = function (subSlug) {
+    activeSub = subSlug;
+
     const buttons = filtersEl.querySelectorAll("button");
     for (let i = 0; i < buttons.length; i++) {
-        const on = buttons[i].dataset.sub === subSlug;
+        const on = (buttons[i].dataset.sub || "") === subSlug;
         buttons[i].classList.toggle("is-active", on);
         buttons[i].setAttribute("aria-pressed", String(on));
     }
@@ -228,33 +193,54 @@ const applyFilter = function (subSlug) {
     history.replaceState(null, "", "?" + next.toString());
 };
 
-const addFilterButton = function (slug, label) {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.textContent = label;
-    if (slug) { btn.dataset.sub = slug; }
-    btn.addEventListener("click", function () { applyFilter(slug); });
-    filtersEl.appendChild(btn);
+/* 분류 단추를 처음부터 다시 만든다. 언어를 바꿀 때도 이 함수를 다시 부른다. */
+const buildFilters = function () {
+    filtersEl.innerHTML = "";
+
+    const addFilterButton = function (slug, label) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = label;
+        if (slug) { btn.dataset.sub = slug; }
+        btn.addEventListener("click", function () { applyFilter(slug); });
+        filtersEl.appendChild(btn);
+    };
+
+    addFilterButton("", t("filter.all"));
+    for (let i = 0; i < category.subs.length; i++) {
+        const slug = category.subs[i];
+        addFilterButton(slug, t("sub." + slug));
+    }
 };
 
-if (!category) {
-    // 주소가 잘못됐을 때 빈 화면 대신 안내를 보여준다
-    titleEl.textContent = "Collection";
-    descEl.textContent = "존재하지 않는 카테고리입니다.";
-    crumbEl.textContent = "Collection";
-    emptyEl.hidden = false;
-} else {
-    document.title = category.title + " — Moongyung Choi";
-    titleEl.textContent = category.title;
-    descEl.textContent = category.desc;
-    crumbEl.textContent = category.title;
-
-    addFilterButton("", "All");
-    for (let i = 0; i < category.subs.length; i++) {
-        addFilterButton(category.subs[i].slug, category.subs[i].label);
+const renderPage = function () {
+    if (!category) {
+        // 주소가 잘못됐을 때 빈 화면 대신 안내를 보여준다
+        titleEl.textContent = t("category.unknown");
+        descEl.textContent = t("category.unknownDesc");
+        crumbEl.textContent = t("category.unknown");
+        emptyEl.hidden = false;
+        return;
     }
 
+    const title = t("cat." + categoryKey);
+    document.title = title + " — Moongyung Choi";
+    titleEl.textContent = title;
+    descEl.textContent = t("desc." + categoryKey);
+    crumbEl.textContent = title;
+
+    buildFilters();
+    applyFilter(activeSub);
+};
+
+/* 첫 그리기. 주소에 ?sub= 이 있으면 그 분류부터 보여준다. */
+if (category) {
     const requested = params.get("sub");
-    const valid = category.subs.some(function (s) { return s.slug === requested; });
-    applyFilter(valid ? requested : "");
+    const valid = category.subs.indexOf(requested) !== -1;
+    activeSub = valid ? requested : "";
 }
+renderPage();
+
+/* 언어를 바꾸면 상품 목록은 data-i18n으로 닿지 않으므로 여기서 다시 그린다.
+   (lang.js가 langchange 이벤트를 보내준다) */
+document.addEventListener("langchange", renderPage);

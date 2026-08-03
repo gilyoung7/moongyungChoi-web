@@ -14,6 +14,12 @@
 html{
     scrollbar-gutter: stable;
 }
+/* 한국어로 볼 때 HTML에 적힌 영어 원문이 잠깐 스쳐 지나가는 걸 막는다.
+   lang.js가 번역을 끝내면 이 클래스를 떼어낸다.
+   클래스 자체를 lang.js가 붙이므로, 자바스크립트가 꺼져 있으면 적용되지 않는다. */
+html.i18n-pending body{
+    visibility: hidden;
+}
 *{
     margin: 0;
     padding: 0;
@@ -249,7 +255,7 @@ section .about-self .right h3{
     font-size: 2rem;
     margin-bottom: 1rem;
 }
-section .about-self .right h3 span{
+section .about-self .right h3 span.accent{
     color: var(--color-accent);
 }
 section .about-self .right p{
@@ -920,7 +926,8 @@ section{
     line-height: 1.85;
     color: rgba(250, 249, 247, 0.6);
 }
-.footer-biz span{
+/* 항목 이름(대표자, 사업자등록번호…)만 흐리게. 뒤따르는 값은 그대로 둔다 */
+.footer-biz p span:first-child{
     margin-right: 0.35rem;
     color: rgba(250, 249, 247, 0.38);
 }

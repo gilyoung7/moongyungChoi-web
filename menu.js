@@ -96,13 +96,4 @@ for (let i = 0; i < submenuItems.length; i++) {
     });
 }
 
-/* 언어 표시 전환 (화면 표시만 바뀌며 실제 번역 기능은 없음) */
-const langButtons = document.querySelectorAll(".drawer-lang button");
-for (let i = 0; i < langButtons.length; i++) {
-    langButtons[i].addEventListener("click", function () {
-        for (let j = 0; j < langButtons.length; j++) {
-            langButtons[j].classList.remove("is-active");
-        }
-        this.classList.add("is-active");
-    });
-}
+/* KR / EN 버튼은 lang.js가 맡습니다. */
