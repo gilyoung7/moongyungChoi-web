@@ -131,6 +131,11 @@ header h1 a{
     padding: 18.75px;
     white-space: nowrap;
 }
+.header-left{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 .menu-toggle{
     margin-left: 1.5rem; /* 오른쪽 nav 여백(약 26px)과 좌우 균형 맞춤 */
     font-size: 1.35rem;
@@ -141,6 +146,34 @@ header h1 a{
 }
 .menu-toggle:hover{
     color: var(--color-accent);
+}
+/* 헤더의 KR/EN. 메뉴가 아니라 보조 장치라서 nav보다 작고 옅게 둔다.
+   글자색은 헤더에서 물려받아, 영상 위(흰색)와 스크롤 후(검정) 모두 따라간다. */
+.header-lang{
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+}
+.header-lang span{
+    opacity: 0.4;
+}
+.header-lang button{
+    font-size: inherit;
+    letter-spacing: inherit;
+    padding: 0.15rem 0;
+    opacity: 0.65;
+    /* 활성 표시로 밑줄이 생겨도 글자가 밀리지 않도록 자리를 미리 잡아 둔다 */
+    border-bottom: 1px solid transparent;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+.header-lang button:hover{
+    opacity: 1;
+}
+.header-lang button.is-active{
+    opacity: 1;
+    border-bottom-color: var(--color-accent);
 }
 header nav ul{
     display: flex;
@@ -469,6 +502,17 @@ section .contact-me .right button:hover{
     }
     header .container{
         min-height: 4rem;
+    }
+    /* 햄버거 옆에 그대로 두면 정중앙에 고정된 워드마크와 부딪힌다.
+       display:contents로 묶음을 풀어 두 버튼을 헤더의 직계 자식으로 만들고,
+       order로 KR/EN을 맨 뒤로 보내 nav가 비운 오른쪽 끝에 놓는다.
+       (order를 주지 않으면 h1보다 앞이라 한가운데에 놓여 워드마크와 겹친다) */
+    .header-left{
+        display: contents;
+    }
+    .header-lang{
+        order: 1;
+        margin-right: 1.5rem; /* 왼쪽 햄버거 여백과 같게 */
     }
     header h1 button,
     header h1 a{

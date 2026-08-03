@@ -377,8 +377,10 @@ const applyTranslations = function () {
     }
 };
 
+/* 헤더와 드로어 양쪽에 KR/EN이 있다. data-lang이 붙은 버튼을 모두 잡아
+   어느 쪽을 눌러도 두 곳의 표시가 함께 바뀌게 한다. */
 const syncLangButtons = function () {
-    const buttons = document.querySelectorAll(".drawer-lang button[data-lang]");
+    const buttons = document.querySelectorAll("button[data-lang]");
     for (let i = 0; i < buttons.length; i++) {
         const on = buttons[i].dataset.lang === currentLang;
         buttons[i].classList.toggle("is-active", on);
@@ -420,7 +422,7 @@ document.addEventListener("DOMContentLoaded", function () {
         applyTranslations();
         syncLangButtons();
 
-        const buttons = document.querySelectorAll(".drawer-lang button[data-lang]");
+        const buttons = document.querySelectorAll("button[data-lang]");
         for (let i = 0; i < buttons.length; i++) {
             buttons[i].addEventListener("click", function () {
                 setLanguage(this.dataset.lang);

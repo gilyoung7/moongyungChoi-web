@@ -36,9 +36,18 @@
     <!--header-->
     <header>
         <div class="container">
-            <button class="menu-toggle" type="button" aria-label="Open menu" data-i18n-aria-label="aria.menuOpen" aria-expanded="false" aria-controls="drawer">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+            <div class="header-left">
+                <button class="menu-toggle" type="button" aria-label="Open menu" data-i18n-aria-label="aria.menuOpen" aria-expanded="false" aria-controls="drawer">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <!--드로어 안쪽 KR/EN과 같은 버튼입니다.
+                    lang.js가 data-lang이 붙은 버튼을 모두 찾아 함께 상태를 맞춥니다.-->
+                <div class="header-lang">
+                    <button type="button" data-lang="ko">KR</button>
+                    <span>/</span>
+                    <button type="button" data-lang="en">EN</button>
+                </div>
+            </div>
             <h1>
                 <button data-animation-scroll="true" data-target="#main" aria-label="Back to top" data-i18n-aria-label="aria.top">Moongyung Choi</button>
             </h1>
