@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@400;700&family=Varela&display=swap');
+/* Bodoni Moda는 브랜드 워드마크(NANNAMOON)에만 씁니다.
+   로고와 같은 디도네 계열이라 획 대비가 크고 헤어라인이 얇습니다.
+   본문과 제목은 계속 Playfair Display를 쓰므로 400 하나만 받아옵니다. */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Bodoni+Moda:wght@400&family=Poppins:wght@400;700&family=Varela&display=swap');
 :root{
     --color-bg: #faf9f7;      /* 오프화이트 배경 */
     --color-bg-alt: #f2efea;  /* 섹션 교차 배경 */
@@ -1195,3 +1198,35 @@ section{
     }
 }
 
+
+/* ===== 브랜드 워드마크 ===== */
+/* 로고(NANNAMOON / SEOUL)의 인상을 따라 가는 획에 자간을 넓게 벌린다.
+   본문 제목은 계속 Playfair Display를 쓰고, 여기 적힌 곳만 서체가 다르다.
+
+   이 규칙은 파일 맨 아래에 둬야 한다. 위쪽의 header h1 / .hero h2 /
+   .drawer-brand / .footer-wordmark 선언과 선택자 우선순위가 같아서,
+   먼저 오면 그쪽에 덮인다. */
+header h1 button,
+header h1 a,
+.hero h2,
+.hero h3,
+.drawer-brand,
+.footer-wordmark{
+    font-family: "Bodoni Moda", serif;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+}
+/* 자간은 마지막 글자 뒤에도 붙어 상자가 그만큼 넓어진다.
+   가운데 정렬된 워드마크는 그 빈칸 때문에 왼쪽으로 치우쳐 보이므로,
+   앞에도 같은 여백을 줘 좌우를 맞춘다. */
+header h1 button,
+header h1 a,
+.hero h2,
+.hero h3{
+    text-indent: 0.16em;
+}
+/* 로고와 같이 도시명은 대문자로. 자간을 벌린 상태에서 소문자를 쓰면
+   글자가 흩어져 보인다. (HTML에는 Seoul로 적어 두고 표시만 바꾼다) */
+.hero h3{
+    text-transform: uppercase;
+}
