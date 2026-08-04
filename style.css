@@ -1,4 +1,4 @@
-/* Bodoni Moda는 브랜드 워드마크(NANNAMOON)에만 씁니다.
+/* Bodoni Moda는 브랜드 워드마크(NANNAMUN)에만 씁니다.
    로고와 같은 디도네 계열이라 획 대비가 크고 헤어라인이 얇습니다.
    본문과 제목은 계속 Playfair Display를 쓰므로 400 하나만 받아옵니다. */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Bodoni+Moda:wght@400&family=Poppins:wght@400;700&family=Varela&display=swap');
@@ -1200,7 +1200,7 @@ section{
 
 
 /* ===== 브랜드 워드마크 ===== */
-/* 로고(NANNAMOON / SEOUL)의 인상을 따라 가는 획에 자간을 넓게 벌린다.
+/* 로고(NANNAMUN / SEOUL)의 인상을 따라 가는 획에 자간을 넓게 벌린다.
    본문 제목은 계속 Playfair Display를 쓰고, 여기 적힌 곳만 서체가 다르다.
 
    이 규칙은 파일 맨 아래에 둬야 한다. 위쪽의 header h1 / .hero h2 /

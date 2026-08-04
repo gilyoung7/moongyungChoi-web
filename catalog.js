@@ -224,7 +224,7 @@ const renderPage = function () {
     }
 
     const title = t("cat." + categoryKey);
-    document.title = title + " — NANNAMOON";
+    document.title = title + " — NANNAMUN";
     titleEl.textContent = title;
     descEl.textContent = t("desc." + categoryKey);
     crumbEl.textContent = title;
