@@ -1234,3 +1234,28 @@ header h1 a,
 .hero h3{
     text-transform: uppercase;
 }
+
+/* ===== 문의 폼 전송 결과 ===== */
+/* 스팸봇을 걸러내는 숨김 칸. 사람에게는 보이지 않아야 한다. */
+.form-botcheck{
+    display: none;
+}
+section .contact-me .right .form-status{
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+section .contact-me .right .form-status.is-success{
+    color: var(--color-accent);
+}
+section .contact-me .right .form-status.is-error{
+    color: #a8443f;
+}
+/* 보내는 중에는 버튼을 눌러도 반응하지 않는다는 것을 눈으로도 알린다 */
+section .contact-me .right button:disabled{
+    opacity: 0.55;
+    cursor: default;
+}
+section .contact-me .right button:disabled:hover{
+    background-color: var(--color-text);
+}

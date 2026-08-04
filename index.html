@@ -199,7 +199,7 @@
                     <a href="" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
                     <a href="" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
                 </div>
-                <p class="drawer-contact">moongyungchoi@naver.com</p>
+                <p class="drawer-contact">mg05041412@gmail.com</p>
             </div>
         </div>
     </aside>
@@ -320,7 +320,7 @@
                         </div>
                         <div class="info-text">
                             <h3 data-i18n="contact.email">email</h3>
-                            <p><a href="mailto:moongyungchoi@naver.com">moongyungchoi@naver.com</a></p>
+                            <p><a href="mailto:mg05041412@gmail.com">mg05041412@gmail.com</a></p>
                         </div>
                     </div>
                     <div class="card">
@@ -334,10 +334,21 @@
                     </div>
                 </div>
                 <div class="right">
-                    <!--아직 받는 곳이 없어 전송해도 메일이 오지 않습니다.
-                        Formspree(formspree.io) 같은 무료 서비스에 가입한 뒤
-                        action="https://formspree.io/f/받은주소" method="post" 로 바꾸면 동작합니다.-->
-                    <form action="" method="post">
+                    <!--Web3Forms(web3forms.com)로 보냅니다.
+
+                        받는 주소는 아래 access_key에 묶여 있습니다. 여기 적혀 있지 않으니,
+                        받을 메일 주소를 바꾸려면 web3forms.com에서 새 키를 받아
+                        이 값만 교체하세요.
+
+                        이 키는 화면에 드러나도 되는 값입니다. 전송 전용이라
+                        남이 가져가도 메일함을 볼 수는 없습니다.
+
+                        메일 제목은 "NANNAMUN 문의 — (방문자가 적은 제목)" 형태로 갑니다.
+                        앞의 고정 문구는 contact.js에서 바꿉니다.-->
+                    <form action="https://api.web3forms.com/submit" method="post" id="contact-form">
+                        <input type="hidden" name="access_key" value="05ec2dec-032e-486a-9e2d-4435065adf70">
+                        <input type="hidden" name="from_name" value="NANNAMUN">
+
                         <div class="form-group">
                             <label for="name" data-i18n="form.name">name</label>
                             <input type="text" id="name" name="name" autocomplete="name" required>
@@ -346,11 +357,25 @@
                             <label for="email" data-i18n="form.email">email</label>
                             <input type="email" id="email" name="email" autocomplete="email" required>
                         </div>
+                        <!--여기 적은 글이 메일 제목이 됩니다.
+                            앞에 "NANNAMUN 문의 —"는 contact.js가 붙입니다.-->
+                        <div class="form-group">
+                            <label for="subject" data-i18n="form.subject">subject</label>
+                            <input type="text" id="subject" name="subject" maxlength="60" required>
+                        </div>
                         <div class="form-group">
                             <label for="msg" data-i18n="form.message">message</label>
                             <textarea id="msg" name="message" required></textarea>
                         </div>
+
+                        <!--사람 눈에는 보이지 않는 칸입니다. 스팸봇은 폼의 모든 칸을 채우기
+                            때문에, 여기가 채워져 있으면 사람이 아니라고 판단해 걸러냅니다.-->
+                        <input type="checkbox" name="botcheck" class="form-botcheck" tabindex="-1" autocomplete="off">
+
                         <button type="submit" data-i18n="form.send">send</button>
+                        <!--전송 결과를 이 자리에 보여줍니다. role/aria-live는 화면 낭독기가
+                            글자가 바뀐 것을 읽어주도록 하는 표시입니다.-->
+                        <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
                     </form>
                 </div>
             </div>
@@ -382,7 +407,7 @@
                     <h3 data-i18n="footer.business">Business</h3>
                     <p><span data-i18n="footer.ceo">Representative</span> <span data-i18n="footer.ceoName">Moongyung Choi</span></p>
                     <p><span data-i18n="footer.bizNo">Business registration no.</span> <span>437-37-01610</span></p>
-                    <p><span data-i18n="footer.email">Email</span> <span>moongyungchoi@naver.com</span></p>
+                    <p><span data-i18n="footer.email">Email</span> <span>mg05041412@gmail.com</span></p>
                     <!--판매를 시작하면 아래 항목도 채워 넣으세요.
                         통신판매업 신고번호는 관할 구청에 신고하면 발급됩니다.
 
@@ -418,5 +443,6 @@
     <script src="menu.js"></script>
     <script src="scroll.js"></script>
     <script src="reveal.js"></script>
+    <script src="contact.js"></script>
 </body>
 </html>

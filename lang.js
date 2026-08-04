@@ -128,8 +128,12 @@ const I18N = {
         "contact.addressValue": "Teheran-ro, Gangnam-gu, Seoul, Republic of Korea",
         "form.name": "name",
         "form.email": "email",
+        "form.subject": "subject",
         "form.message": "message",
         "form.send": "send",
+        "form.sending": "Sending…",
+        "form.success": "Thank you. Your message has been sent — we will reply to the email you provided.",
+        "form.error": "Sending failed. Please try again in a moment, or email us directly.",
 
         /* ----- 푸터 ----- */
         "footer.explore": "Explore",
@@ -274,8 +278,12 @@ const I18N = {
         "contact.addressValue": "서울특별시 강남구 테헤란로",
         "form.name": "이름",
         "form.email": "이메일",
+        "form.subject": "제목",
         "form.message": "문의 내용",
         "form.send": "보내기",
+        "form.sending": "보내는 중…",
+        "form.success": "문의가 전송되었습니다. 남겨주신 이메일로 답변드리겠습니다.",
+        "form.error": "전송에 실패했습니다. 잠시 후 다시 시도하시거나 이메일로 보내주세요.",
 
         /* ----- 푸터 ----- */
         "footer.explore": "둘러보기",
