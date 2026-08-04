@@ -250,9 +250,13 @@ header nav ul li a:hover{
     letter-spacing: 3px;
     margin-bottom: 2rem;
 }
+/* 슬로건도 워드마크와 같은 서체를 쓴다.
+   비슷하지만 다른 세리프 두 개가 한 화면에 겹치면 의도가 아니라 어긋남으로 읽힌다.
+   다만 자간은 워드마크(0.16em)보다 훨씬 좁게 줘야 문장으로 읽힌다. */
 .hero p{
-    font-family: "Playfair Display", serif;
-    font-size: 1.5rem;
+    font-family: "Bodoni Moda", serif;
+    font-size: 1.35rem;
+    letter-spacing: 0.06em;
 }
 /* about */
 section{
