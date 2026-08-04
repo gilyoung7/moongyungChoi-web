@@ -66,30 +66,20 @@ const closeAllSubmenus = function () {
     }
 };
 
-/* 마우스가 있는 기기에서만 hover로 여닫는다.
-   (hover: none)인 터치 기기는 아래 클릭 처리만 사용한다. */
-const hasHover = window.matchMedia("(hover: hover)").matches;
+/* 눌러서 열고, 다시 누를 때까지 열린 채로 둔다.
 
+   예전에는 마우스를 올리면 열리고 벗어나면 바로 닫혔는데, 세로로 늘어선
+   드로어에서는 맞지 않았다. 하위 항목을 보려고 마우스를 움직이거나
+   드로어를 스크롤하는 순간 닫혀버렸고, 무엇보다 hover가 클릭을 덮어써서
+   눌러서 고정하는 것 자체가 되지 않았다. (마우스를 떼면 mouseleave가 닫음)
+   그래서 여닫는 판단은 클릭 하나로만 한다. 터치 기기와도 동작이 같아진다. */
 for (let i = 0; i < submenuItems.length; i++) {
     const item = submenuItems[i];
     const trigger = item.querySelector(".submenu-trigger");
 
-    if (hasHover) {
-        item.addEventListener("mouseenter", function () {
-            closeAllSubmenus(); // 한 번에 하나만 펼쳐지도록
-            setSubmenu(item, true);
-        });
-        item.addEventListener("mouseleave", function () {
-            setSubmenu(item, false);
-        });
-    }
-
-    /* 화살표를 누르면 열고 닫기를 전환한다.
-       클릭으로 닫은 뒤에는 mouseenter가 다시 발생하지 않으므로
-       마우스를 뺐다가 다시 올려야 열린다. 의도한 동작이다. */
     trigger.addEventListener("click", function () {
         const willOpen = !item.classList.contains("is-open");
-        closeAllSubmenus();
+        closeAllSubmenus(); // 한 번에 하나만 펼쳐지도록
         if (willOpen) {
             setSubmenu(item, true);
         }
