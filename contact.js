@@ -53,10 +53,9 @@ contactForm.addEventListener("submit", function (e) {
     }
 
     /* 방문자가 적은 제목 앞에 고정 문구를 붙인다.
-       비워둔 채로 넘어온 경우(자바스크립트로 required를 우회한 경우)에는
-       이름을 대신 넣어, 제목 없는 메일이 오지 않게 한다. */
+       비워둔 채로 넘어온 경우(required를 우회한 경우)에는 고정 문구만 남긴다. */
     const typed = (data.subject || "").trim();
-    data.subject = CONTACT_SUBJECT_PREFIX + " — " + (typed || data.name);
+    data.subject = typed ? CONTACT_SUBJECT_PREFIX + " — " + typed : CONTACT_SUBJECT_PREFIX;
 
     if (data.access_key === CONTACT_KEY_PLACEHOLDER) {
         // 사이트를 만든 사람에게만 보이는 안내. 방문자에게는 일반 오류로 보인다.
