@@ -224,7 +224,7 @@ const renderPage = function () {
     }
 
     const title = t("cat." + categoryKey);
-    document.title = title + " — Moongyung Choi";
+    document.title = title + " — NANNAMOON";
     titleEl.textContent = title;
     descEl.textContent = t("desc." + categoryKey);
     crumbEl.textContent = title;

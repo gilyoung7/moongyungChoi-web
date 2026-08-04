@@ -21,10 +21,10 @@ const I18N_ATTRS = ["alt", "aria-label", "content", "placeholder", "title"];
 const I18N = {
     en: {
         /* ----- 문서 정보 ----- */
-        "meta.title.index": "Moongyung Choi — Paris",
-        "meta.desc.index": "A luxury fashion brand founded in 2025 by designer Moongyung Choi. Discover the Moongyung Choi collection.",
-        "meta.desc.category": "The Moongyung Choi collection. Women, Men, Bags, Shoes, Accessories and Beauty.",
-        "meta.title.error": "Page Not Found — Moongyung Choi",
+        "meta.title.index": "NANNAMOON — Seoul",
+        "meta.desc.index": "A luxury fashion brand founded in 2025 by designer Moongyung Choi. Discover the NANNAMOON collection.",
+        "meta.desc.category": "The NANNAMOON collection. Women, Men, Bags, Shoes, Accessories and Beauty.",
+        "meta.title.error": "Page Not Found — NANNAMOON",
         "meta.desc.error": "The page you are looking for does not exist.",
 
         /* ----- 헤더 ----- */
@@ -103,18 +103,18 @@ const I18N = {
 
         /* ----- 소개 ----- */
         "about.eyebrow": "Who is Moongyung Choi",
-        "about.title": "About Moongyung Choi",
+        "about.title": "About NANNAMOON",
         "about.greeting": "Hello,",
         "about.name": "I'm Moongyung Choi",
         "about.p1": "I'm a global fashion designer",
         "about.p2": "And graduated from Incheon National University in Korea with the department of fashion industry",
-        "about.p3": "I've always wanted my brand \"Moongyung Choi\", which started in 2025, to go global",
-        "about.p4": "Now, enjoy my luxury brand Moongyung Choi!",
+        "about.p3": "I've always wanted my brand \"NANNAMOON\", which started in 2025, to go global",
+        "about.p4": "Now, enjoy my luxury brand NANNAMOON!",
         "about.imgAlt": "Signature look by designer Moongyung Choi",
 
         /* ----- 신상품 ----- */
         "new.title": "BEST COLLECTION",
-        "new.item1": "Moongyung Choi Signature Coat",
+        "new.item1": "NANNAMOON Signature Coat",
         "new.item2": "Natural Leather Bag",
         "new.item3": "Long Skirt",
         "new.more": "See more new arrivals",
@@ -170,10 +170,10 @@ const I18N = {
 
     ko: {
         /* ----- 문서 정보 ----- */
-        "meta.title.index": "Moongyung Choi — 파리",
-        "meta.desc.index": "디자이너 최문경이 2025년 시작한 럭셔리 패션 브랜드. Moongyung Choi의 컬렉션을 만나보세요.",
-        "meta.desc.category": "Moongyung Choi 컬렉션. 여성·남성 의류, 가방, 슈즈, 액세서리, 뷰티.",
-        "meta.title.error": "페이지를 찾을 수 없습니다 — Moongyung Choi",
+        "meta.title.index": "NANNAMOON — 서울",
+        "meta.desc.index": "디자이너 최문경이 2025년 시작한 럭셔리 패션 브랜드. NANNAMOON의 컬렉션을 만나보세요.",
+        "meta.desc.category": "NANNAMOON 컬렉션. 여성·남성 의류, 가방, 슈즈, 액세서리, 뷰티.",
+        "meta.title.error": "페이지를 찾을 수 없습니다 — NANNAMOON",
         "meta.desc.error": "찾으시는 페이지가 존재하지 않습니다.",
 
         /* ----- 헤더 ----- */
@@ -254,13 +254,13 @@ const I18N = {
         "about.name": "디자이너 최문경입니다",
         "about.p1": "저는 글로벌 패션 디자이너입니다",
         "about.p2": "인천대학교 패션산업학과를 졸업했습니다",
-        "about.p3": "2025년에 시작한 제 브랜드 \"Moongyung Choi\"가 세계로 나아가기를 늘 바라왔습니다",
-        "about.p4": "이제, 럭셔리 브랜드 Moongyung Choi를 만나보세요",
+        "about.p3": "2025년에 시작한 제 브랜드 \"NANNAMOON\"이 세계로 나아가기를 늘 바라왔습니다",
+        "about.p4": "이제, 럭셔리 브랜드 NANNAMOON을 만나보세요",
         "about.imgAlt": "디자이너 최문경의 대표 착장",
 
         /* ----- 신상품 ----- */
         "new.title": "베스트 컬렉션",
-        "new.item1": "문경초이 시그니처 코트",
+        "new.item1": "NANNAMOON 시그니처 코트",
         "new.item2": "천연 가죽 가방",
         "new.item3": "긴 치마",
         "new.more": "더 많은 신상품 보기",
